@@ -1,0 +1,19 @@
+//
+//  UdacityConstants.swift
+//  On The Map
+//
+//  Created by Kim Lyndon on 9/11/18.
+//  Copyright © 2018 Kim Lyndon. All rights reserved.
+//
+
+import Foundation
+
+struct UdacityConstants {
+    static let BaseURL: String = "https://www.udacity.com/api/session"
+    static let SignUpURL: String = "https://www.udacity.com/account/auth#!/signup"
+}
+
+struct Methods {
+    static let Session = "/session"
+    static let User = "/users"
+}
