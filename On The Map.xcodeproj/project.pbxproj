@@ -10,6 +10,7 @@
 		983A0006214836330054D3F3 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A0005214836330054D3F3 /* GCDBlackBox.swift */; };
 		983A00082148447D0054D3F3 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A00072148447D0054D3F3 /* ParseConstants.swift */; };
 		983A000A214848230054D3F3 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A0009214848230054D3F3 /* UdacityConstants.swift */; };
+		983A000C214993EE0054D3F3 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A000B214993EE0054D3F3 /* UdacityClient.swift */; };
 		983AFFED214830C60054D3F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983AFFEC214830C60054D3F3 /* AppDelegate.swift */; };
 		983AFFEF214830C60054D3F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983AFFEE214830C60054D3F3 /* ViewController.swift */; };
 		983AFFF2214830C60054D3F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF0214830C60054D3F3 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		983A0005214836330054D3F3 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		983A00072148447D0054D3F3 /* ParseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		983A0009214848230054D3F3 /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		983A000B214993EE0054D3F3 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		983AFFE9214830C60054D3F3 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		983AFFEC214830C60054D3F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		983AFFEE214830C60054D3F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				983A0009214848230054D3F3 /* UdacityConstants.swift */,
+				983A000B214993EE0054D3F3 /* UdacityClient.swift */,
 			);
 			path = Udacity;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			files = (
 				983AFFEF214830C60054D3F3 /* ViewController.swift in Sources */,
 				983A000A214848230054D3F3 /* UdacityConstants.swift in Sources */,
+				983A000C214993EE0054D3F3 /* UdacityClient.swift in Sources */,
 				983A0006214836330054D3F3 /* GCDBlackBox.swift in Sources */,
 				983AFFED214830C60054D3F3 /* AppDelegate.swift in Sources */,
 				983A00082148447D0054D3F3 /* ParseConstants.swift in Sources */,
