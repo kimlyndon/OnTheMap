@@ -7,6 +7,7 @@
 //
 
 import Foundation
+extension ParseClient {
 
 struct ParseConstants {
     static let BaseURL: String = "https://parse.udacity.com/parse/classes/StudentLocation"
@@ -27,4 +28,5 @@ struct JSONResponseKeys {
     static let updatedAt: String = "updatedAt"
     static let error: String = "error"
     static let results: String = "results"
+}
 }
