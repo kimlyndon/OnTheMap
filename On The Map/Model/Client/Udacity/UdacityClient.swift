@@ -9,16 +9,21 @@
 import Foundation
 
 class UdacityClient {
-
+    
+// Login using Udacity credentials
+    
 func login(username: String, password: String, completionHandler: @escaping (_ success: Bool, _ errorMessage: String?) -> Void) {
+    
     var request = URLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+    
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.httpBody = "{\"udacity\": {\"username\": \"account@domain.com\", \"password\": \"********\"}}".data(using: .utf8)
+    
     let session = URLSession.shared
     let task = session.dataTask(with: request) { data, response, error in
-        if error != nil {
+        if error == nil { //Handle the error: TODO
             return
         }
         let range = Range(5..<data!.count)
