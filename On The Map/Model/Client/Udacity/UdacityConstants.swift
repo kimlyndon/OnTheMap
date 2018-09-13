@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+extension UdacityClient {
+    
 struct UdacityConstants {
     static let BaseURL: String = "https://www.udacity.com/api/session"
     static let SignUpURL: String = "https://www.udacity.com/account/auth#!/signup"
@@ -16,4 +17,14 @@ struct UdacityConstants {
 struct Methods {
     static let Session = "/session"
     static let User = "/users"
+}
+   
+struct HttpMethod {
+    static let Get = "GET"
+    static let Post = "POST"
+    static let Put = "PUT"
+    static let Delete = "DELETE"
+    
+    }
+
 }
