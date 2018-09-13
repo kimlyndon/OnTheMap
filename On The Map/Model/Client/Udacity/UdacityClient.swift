@@ -9,6 +9,7 @@
 import Foundation
 
 class UdacityClient {
+
     static let sharedInstance = UdacityClient()
     
 // Login using Udacity credentials
@@ -16,7 +17,7 @@ class UdacityClient {
     func login(_ username: String, password: String, completionHandler: @escaping (_ sessionID: String?) -> Void) {
     
     var request = URLRequest(url: URL(string: Constants.UdacityConstants.BaseURL)!)
-    
+
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
