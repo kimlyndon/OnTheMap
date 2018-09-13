@@ -10,7 +10,7 @@ import Foundation
 
 struct ParseConstants {
     static let BaseURL: String = "https://parse.udacity.com/parse/classes/StudentLocation"
-    static let AppID: String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAblr"
+    static let AppID: String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
     static let ApiKey: String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
 }
 

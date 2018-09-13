@@ -14,8 +14,9 @@ class UdacityClient {
     
 // Login using Udacity credentials
     
+
     func login(_ username: String, password: String, completionHandler: @escaping (_ sessionID: String?) -> Void) {
-    
+
     var request = URLRequest(url: URL(string: Constants.UdacityConstants.BaseURL)!)
 
     request.httpMethod = "POST"

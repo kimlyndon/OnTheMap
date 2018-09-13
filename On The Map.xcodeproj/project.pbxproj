@@ -11,11 +11,14 @@
 		983A00082148447D0054D3F3 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A00072148447D0054D3F3 /* ParseConstants.swift */; };
 		983A000A214848230054D3F3 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A0009214848230054D3F3 /* UdacityConstants.swift */; };
 		983A000C214993EE0054D3F3 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A000B214993EE0054D3F3 /* UdacityClient.swift */; };
+		983A000E214AEE6A0054D3F3 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A000D214AEE6A0054D3F3 /* StudentInformation.swift */; };
+		983A0010214B03150054D3F3 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A000F214B03150054D3F3 /* ParseClient.swift */; };
 		983AFFED214830C60054D3F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983AFFEC214830C60054D3F3 /* AppDelegate.swift */; };
-		983AFFEF214830C60054D3F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983AFFEE214830C60054D3F3 /* ViewController.swift */; };
+		983AFFEF214830C60054D3F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983AFFEE214830C60054D3F3 /* LoginViewController.swift */; };
 		983AFFF2214830C60054D3F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF0214830C60054D3F3 /* Main.storyboard */; };
 		983AFFF4214830CB0054D3F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF3214830CB0054D3F3 /* Assets.xcassets */; };
 		983AFFF7214830CB0054D3F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF5214830CB0054D3F3 /* LaunchScreen.storyboard */; };
+		98EE4AB4214B06CE00139A01 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE4AB3214B06CE00139A01 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +26,16 @@
 		983A00072148447D0054D3F3 /* ParseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		983A0009214848230054D3F3 /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
 		983A000B214993EE0054D3F3 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		983A000D214AEE6A0054D3F3 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
+		983A000F214B03150054D3F3 /* ParseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		983AFFE9214830C60054D3F3 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		983AFFEC214830C60054D3F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		983AFFEE214830C60054D3F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		983AFFEE214830C60054D3F3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		983AFFF1214830C60054D3F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		983AFFF3214830CB0054D3F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983AFFF6214830CB0054D3F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		983AFFF8214830CB0054D3F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98EE4AB3214B06CE00139A01 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				983A00072148447D0054D3F3 /* ParseConstants.swift */,
+				983A000F214B03150054D3F3 /* ParseClient.swift */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -63,7 +70,8 @@
 		983A00022148313F0054D3F3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				983AFFEE214830C60054D3F3 /* ViewController.swift */,
+				983AFFEE214830C60054D3F3 /* LoginViewController.swift */,
+				98EE4AB3214B06CE00139A01 /* MapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -118,6 +126,7 @@
 		983AFFFE214830EC0054D3F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				983A000D214AEE6A0054D3F3 /* StudentInformation.swift */,
 				983AFFFF214831000054D3F3 /* Client */,
 			);
 			path = Model;
@@ -203,11 +212,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				983AFFEF214830C60054D3F3 /* ViewController.swift in Sources */,
+				983A000E214AEE6A0054D3F3 /* StudentInformation.swift in Sources */,
+				983AFFEF214830C60054D3F3 /* LoginViewController.swift in Sources */,
 				983A000A214848230054D3F3 /* UdacityConstants.swift in Sources */,
 				983A000C214993EE0054D3F3 /* UdacityClient.swift in Sources */,
+				98EE4AB4214B06CE00139A01 /* MapViewController.swift in Sources */,
 				983A0006214836330054D3F3 /* GCDBlackBox.swift in Sources */,
 				983AFFED214830C60054D3F3 /* AppDelegate.swift in Sources */,
+				983A0010214B03150054D3F3 /* ParseClient.swift in Sources */,
 				983A00082148447D0054D3F3 /* ParseConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
