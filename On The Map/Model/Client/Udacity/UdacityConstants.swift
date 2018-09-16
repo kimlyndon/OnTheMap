@@ -12,7 +12,7 @@ extension UdacityClient {
 
 struct Constants {
         
-}
+
 
 struct UdacityConstants {
     static let BaseURL: String = "https://www.udacity.com/api/session"
@@ -34,3 +34,4 @@ struct HttpMethod {
 
 }
 
+}
