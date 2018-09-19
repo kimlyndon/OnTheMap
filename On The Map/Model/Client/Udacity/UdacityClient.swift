@@ -9,8 +9,21 @@
 import Foundation
 
 class UdacityClient {
+    
+    //Mark Properties
+    var sessionID: String?
 
-    static let sharedInstance = UdacityClient()
+    static var sharedInstance = UdacityClient()
+       
+
+
+// MARK: Methods
+func taskForPOSTASesson() {
+}
+
+func taskForGETPublicUserData() {
+}
+
     
 // Login using Udacity credentials
     
@@ -25,16 +38,23 @@ class UdacityClient {
     request.httpBody = "{\"udacity\": {\"username\": \"account@domain.com\", \"password\": \"********\"}}".data(using: .utf8)
     
     let session = URLSession.shared
-    let task = session.dataTask(with: request) { data, response, error in
-        if error == nil { //Handle the error: TODO
-            return
+    
+    let task = session.dataTask(with: request) { (data, response, error) in
+        if error != nil { // Handle error: TODO
+           return
         }
+        
 // Skip first 5 characters of data
         let range = Range(5..<data!.count)
         let newData = data?.subdata(in: range)
         print(String(data: newData!, encoding: .utf8)!)
 }
+        
 task.resume()
+        
 }
 
 }
+
+
+

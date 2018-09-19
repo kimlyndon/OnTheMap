@@ -18,6 +18,7 @@
 		983AFFF2214830C60054D3F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF0214830C60054D3F3 /* Main.storyboard */; };
 		983AFFF4214830CB0054D3F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF3214830CB0054D3F3 /* Assets.xcassets */; };
 		983AFFF7214830CB0054D3F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF5214830CB0054D3F3 /* LaunchScreen.storyboard */; };
+		988024A621527C110091BCF2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 988024A521527C110091BCF2 /* Info.plist */; };
 		98EE4AB4214B06CE00139A01 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE4AB3214B06CE00139A01 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +35,7 @@
 		983AFFF1214830C60054D3F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		983AFFF3214830CB0054D3F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983AFFF6214830CB0054D3F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		983AFFF8214830CB0054D3F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		988024A521527C110091BCF2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98EE4AB3214B06CE00139A01 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,7 +92,7 @@
 			children = (
 				983AFFEC214830C60054D3F3 /* AppDelegate.swift */,
 				983A0005214836330054D3F3 /* GCDBlackBox.swift */,
-				983AFFF8214830CB0054D3F3 /* Info.plist */,
+				988024A521527C110091BCF2 /* Info.plist */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -199,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				988024A621527C110091BCF2 /* Info.plist in Resources */,
 				983AFFF7214830CB0054D3F3 /* LaunchScreen.storyboard in Resources */,
 				983AFFF4214830CB0054D3F3 /* Assets.xcassets in Resources */,
 				983AFFF2214830C60054D3F3 /* Main.storyboard in Resources */,
@@ -366,7 +368,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87T6RG3PX5;
-				INFOPLIST_FILE = "On The Map/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -384,7 +386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87T6RG3PX5;
-				INFOPLIST_FILE = "On The Map/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

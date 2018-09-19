@@ -19,4 +19,5 @@ struct StudentInformation {
     let uniqueKey: String?
     let updatedAt: String?
     let createdAt: String?
+    
 }
