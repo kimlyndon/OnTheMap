@@ -30,7 +30,7 @@ func taskForGETPublicUserData() {
 
     func login(_ username: String, password: String, completionHandler: @escaping (_ sessionID: String?) -> Void) {
 
-    var request = URLRequest(url: URL(string: Constants.UdacityConstants.BaseURL)!)
+    var request = URLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
 
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Accept")

@@ -9,6 +9,10 @@
 import Foundation
 
 class ParseClient: NSObject {
-    
+
+    //MARK: Methods
+//func taskForPOSTAStudentLocation
+
+//func taskForPUTAStudentLocation
 
 }

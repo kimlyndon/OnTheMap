@@ -7,7 +7,6 @@
 //
 
 import Foundation
-extension ParseClient {
 
 class ParseConstants {
     
@@ -63,4 +62,4 @@ class ParseConstants {
     
   }
     
-}
+
