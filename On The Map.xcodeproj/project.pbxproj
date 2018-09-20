@@ -19,6 +19,7 @@
 		983AFFF4214830CB0054D3F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF3214830CB0054D3F3 /* Assets.xcassets */; };
 		983AFFF7214830CB0054D3F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF5214830CB0054D3F3 /* LaunchScreen.storyboard */; };
 		988024A621527C110091BCF2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 988024A521527C110091BCF2 /* Info.plist */; };
+		988024A82154267B0091BCF2 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988024A72154267B0091BCF2 /* APIClient.swift */; };
 		98EE4AB4214B06CE00139A01 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE4AB3214B06CE00139A01 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		983AFFF3214830CB0054D3F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983AFFF6214830CB0054D3F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		988024A521527C110091BCF2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		988024A72154267B0091BCF2 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		98EE4AB3214B06CE00139A01 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 		983AFFFE214830EC0054D3F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				988024A72154267B0091BCF2 /* APIClient.swift */,
 				983A000D214AEE6A0054D3F3 /* StudentInformation.swift */,
 				983AFFFF214831000054D3F3 /* Client */,
 			);
@@ -217,6 +220,7 @@
 				983A000E214AEE6A0054D3F3 /* StudentInformation.swift in Sources */,
 				983AFFEF214830C60054D3F3 /* LoginViewController.swift in Sources */,
 				983A000A214848230054D3F3 /* UdacityConstants.swift in Sources */,
+				988024A82154267B0091BCF2 /* APIClient.swift in Sources */,
 				983A000C214993EE0054D3F3 /* UdacityClient.swift in Sources */,
 				98EE4AB4214B06CE00139A01 /* MapViewController.swift in Sources */,
 				983A0006214836330054D3F3 /* GCDBlackBox.swift in Sources */,
