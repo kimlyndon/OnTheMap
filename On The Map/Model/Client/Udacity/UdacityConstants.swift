@@ -7,8 +7,9 @@
 //
 
 import Foundation
+
 extension UdacityClient {
-    
+
 
 class UdacityConstants  {
         
@@ -40,5 +41,3 @@ class UdacityConstants  {
   }
 
 }
-
-

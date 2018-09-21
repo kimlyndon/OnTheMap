@@ -22,7 +22,9 @@ struct StudentInformation {
     let createdAt: String?
     
     static var studentArray = [StudentInformation]()
+    
     init(fromDictionary dictionary: [String:AnyObject]) {
+        
         if let firstName = dictionary[ParseConstants.JSONResponseKeys.firstName] as? String {
             self.firstName = firstName
         } else {

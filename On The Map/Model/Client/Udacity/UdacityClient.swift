@@ -18,12 +18,12 @@ class UdacityClient {
 
 
 // MARK: Methods
-func taskForPOSTASesson() {
-}
+    
+//func taskForPOSTASesson() {}
 
-func taskForGETPublicUserData() {
-}
+//func taskForGETPublicUserData() {}
 
+//func taskForDeleteSession {}
     
 // Login using Udacity credentials
     
