@@ -27,22 +27,23 @@ class ParseConstants {
     
     struct URLRequest {
         static let postMethod = "POST"
+        static let putMethod = "PUT"
         
     }
 
     struct JSONResponseKeys {
-        static let objectId: String = "objectId"
-        static let uniqueKey: String = "uniqueKey"
-        static let firstName: String = "firstName"
-        static let lastName: String = "lastName"
-        static let mapString: String = "mapString"
-        static let mediaURL: String = "mediaURL"
-        static let latitude: String = "latitude"
-        static let longitude: String = "longitude"
-        static let createdAt: String = "createdAt"
-        static let updatedAt: String = "updatedAt"
-        static let error: String = "error"
-        static let results: String = "results"
+        static let ObjectId: String = "objectId"
+        static let UniqueKey: String = "uniqueKey"
+        static let FirstName: String = "Carmen"
+        static let LastName: String = "Sandiego"
+        static let MapString: String = "mapString"
+        static let MediaURL: String = "mediaURL"
+        static let Latitude: String = "latitude"
+        static let Longitude: String = "longitude"
+        static let CreatedAt: String = "createdAt"
+        static let UpdatedAt: String = "updatedAt"
+        static let Error: String = "error"
+        static let Results: String = "results"
     
     }
     

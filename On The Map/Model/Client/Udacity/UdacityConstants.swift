@@ -17,7 +17,7 @@ class UdacityConstants  {
     struct UdacityURL {
         static let BaseURL: String = "https://www.udacity.com/api/session"
         static let SignUpURL: String = "https://www.udacity.com/account/auth#!/signup"
-        static let publicUserData: String = "https://www.udacity.com/api/users"
+        static let PublicUserData: String = "https://www.udacity.com/api/users"
             
     }
    
@@ -30,11 +30,15 @@ class UdacityConstants  {
     }
     
     struct APIResponseKeys {
-        static let account = "account"
-        static let key = "key"
-        static let user = "user"
-        static let firstName = "first_name"
-        static let lastName = "last_name"
+        static let Account = "account"
+        static let Registered = "registered"
+        static let Session = "session"
+        static let SessionID = "id"
+        static let Key = "key"
+        static let User = "user"
+        static let FirstName = "first_name"
+        static let LastName = "last_name"
+        static let Expiration = "expiration"
         
     }
     
