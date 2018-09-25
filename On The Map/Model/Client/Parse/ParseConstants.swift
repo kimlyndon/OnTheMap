@@ -11,6 +11,9 @@ import Foundation
 class ParseConstants {
     
     struct URL {
+        static let ApiScheme: String = "https"
+        static let ApiHost: String = "parse.udacity.com"
+        static let ApiPath: String = "/parse/classes"
         static let BaseURL: String = "https://parse.udacity.com/parse/classes/StudentLocation"
     }
     
