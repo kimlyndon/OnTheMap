@@ -9,10 +9,56 @@
 import Foundation
 
 class ParseClient: NSObject {
-
-    //MARK: Methods
     
-    func taskForGETPublicUserData(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    //MARK: Properties
+    var session = URLSession.shared
+    
+    //MARK: Initializers
+    override init() {
+        super.init()
+    }
+    
+    //MARK: Methods- POST
+    func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask  {
+        
+        //Convert to JSON
+        let requestBody = try? JSONSerialization.data(withJSONObject: parameters
+            , options: .prettyPrinted)
+        
+        //Build URL Configure request
+        let request = NSMutableURLRequest(url: URL(string: ParseConstants.URL.BaseURL)!)
+        request.httpMethod = ParseConstants.URLRequest.postMethod
+        request.addValue(ParseConstants.APIHeaderValues.AppID, forHTTPHeaderField: ParseConstants.APIHeaderKeys.ID)
+        request.addValue(ParseConstants.APIHeaderValues.ApiKey, forHTTPHeaderField: ParseConstants.APIHeaderKeys.key)
+        request.addValue(ParseConstants.QueryItemValues.contentTypeValue, forHTTPHeaderField: ParseConstants.QueryItemKeys.contentType)
+        request.httpBody = requestBody
+        
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            func sendError( _error: String) {
+                let userData = [NSLocalizedDescriptionKey : error]
+                completionHandlerForPOST(nil, NSError(domain: "ParseClient (taskForPOSTMethod)", code: 1, userInfo: userData))
+            }
+            guard (error == nil) else {
+                sendError(_error: "There was an error with your request: \(error)")
+                return
+            }
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError(_error: "Your request returned a status code other than 2XX!")
+                return
+            }
+            guard let data = data else {
+                sendError(_error: "No data was returned by the request.")
+                return
+            }
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            }
+        
+        task.resume()
+        return task
+        
+    }
+    
+    func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         var request = URLRequest(url: URL(string: ParseConstants.URL.BaseURL)!)
         request.addValue(ParseConstants.APIHeaderValues.AppID, forHTTPHeaderField: ParseConstants.APIHeaderKeys.ID)
@@ -32,29 +78,7 @@ class ParseClient: NSObject {
         
     }
     
-    func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask  {
-        
-       var request = URLRequest(url: URL(string: ParseConstants.URL.BaseURL)!)
-       request.httpMethod = ParseConstants.URLRequest.postMethod
-       request.addValue(ParseConstants.APIHeaderValues.AppID, forHTTPHeaderField: ParseConstants.APIHeaderKeys.ID)
-       request.addValue(ParseConstants.APIHeaderValues.ApiKey, forHTTPHeaderField: ParseConstants.APIHeaderKeys.key)
-       request.addValue(ParseConstants.QueryItemValues.contentTypeValue, forHTTPHeaderField: ParseConstants.QueryItemKeys.contentType)
-       request.httpBody = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}".data(using: .utf8)
-       let session = URLSession.shared
-       let task = session.dataTask(with: request) { data, response, error in
-        
-        if error != nil { // Handle error… TODO
-            return
-        }
-        
-        print(String(data: data!, encoding: .utf8)!)
-        
-    }
-        
-       task.resume()
-        return task
-
-}
+   
     
     func taskForPUTMethod(_ method: String, objectId: String, parameters: [String:AnyObject], completionHandlerForPUT: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
