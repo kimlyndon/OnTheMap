@@ -22,7 +22,7 @@ class ParseClient: NSObject {
     func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         //Build URL and Configure Request
-        var request = NSMutableURLRequest(url: URL(string: ParseConstants.URL.BaseURL)!)
+        var request = NSMutableURLRequest(url: parseURLFromParameters(method, parameters: parameters))
         request.addValue(ParseConstants.APIHeaderValues.AppID, forHTTPHeaderField: ParseConstants.APIHeaderKeys.ID)
         request.addValue(ParseConstants.APIHeaderValues.ApiKey, forHTTPHeaderField: ParseConstants.APIHeaderKeys.key)
        
@@ -61,7 +61,7 @@ class ParseClient: NSObject {
             , options: .prettyPrinted)
         
         //Build URL Configure request
-        let request = NSMutableURLRequest(url: URL(string: ParseConstants.URL.BaseURL)!)
+        var request = NSMutableURLRequest(url:parseURLFromParameters(method))
         request.httpMethod = ParseConstants.URLRequest.postMethod
         request.addValue(ParseConstants.APIHeaderValues.AppID, forHTTPHeaderField: ParseConstants.APIHeaderKeys.ID)
         request.addValue(ParseConstants.APIHeaderValues.ApiKey, forHTTPHeaderField: ParseConstants.APIHeaderKeys.key)
@@ -144,6 +144,28 @@ class ParseClient: NSObject {
         }
         
         completionHandlerForConvertData(parsedResult, nil)
+    }
+    
+    //Create a URL from parameters
+    private func parseURLFromParameters(_ withPathExtension: String, parameters: [String:AnyObject]? = nil, parameterKey: String? = nil) -> URL {
+        
+        var components = URLComponents()
+        components.scheme = ParseConstants.URL.ApiScheme
+        components.host = ParseConstants.URL.ApiHost
+        components.path = ParseConstants.URL.ApiPath + (withPathExtension)
+        components.queryItems = [URLQueryItem]()
+        
+        if let key = parameterKey {
+            components.path = components.path+"/"+key
+        }
+        if let parameter = parameters {
+            for (key, value) in parameter {
+                let queryItem = URLQueryItem(name: key, value: "\(value)")
+                components.queryItems!.append(queryItem)
+            }
+        }
+        
+        return components.url!
     }
     
     // MARK: Shared Instance
