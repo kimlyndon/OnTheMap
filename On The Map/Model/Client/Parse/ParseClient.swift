@@ -18,7 +18,28 @@ class ParseClient: NSObject {
         super.init()
     }
     
-    //MARK: Methods- POST
+    //MARK: Methods- GET
+    func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+        
+        var request = URLRequest(url: URL(string: ParseConstants.URL.BaseURL)!)
+        request.addValue(ParseConstants.APIHeaderValues.AppID, forHTTPHeaderField: ParseConstants.APIHeaderKeys.ID)
+        request.addValue(ParseConstants.APIHeaderValues.ApiKey, forHTTPHeaderField: ParseConstants.APIHeaderKeys.key)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            if error != nil { // Handle error...TODO
+                return
+            }
+            
+            print(String(data: data!, encoding: .utf8)!)
+        }
+        
+        task.resume()
+        return task
+        
+    }
+    
+    //POST
     func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask  {
         
         //Convert to JSON
@@ -58,28 +79,7 @@ class ParseClient: NSObject {
         
     }
     
-    func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
-        
-        var request = URLRequest(url: URL(string: ParseConstants.URL.BaseURL)!)
-        request.addValue(ParseConstants.APIHeaderValues.AppID, forHTTPHeaderField: ParseConstants.APIHeaderKeys.ID)
-        request.addValue(ParseConstants.APIHeaderValues.ApiKey, forHTTPHeaderField: ParseConstants.APIHeaderKeys.key)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            
-            if error != nil { // Handle error...TODO
-                return
-            }
-            
-            print(String(data: data!, encoding: .utf8)!)
-        }
-        
-        task.resume()
-        return task
-        
-    }
-    
-   
-    
+    //PUT
     func taskForPUTMethod(_ method: String, objectId: String, parameters: [String:AnyObject], completionHandlerForPUT: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         // Build the URL, Configure the request
