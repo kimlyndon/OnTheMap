@@ -21,22 +21,36 @@ class ParseClient: NSObject {
     //MARK: Methods- GET
     func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
-        var request = URLRequest(url: URL(string: ParseConstants.URL.BaseURL)!)
+        //Build URL and Configure Request
+        var request = NSMutableURLRequest(url: URL(string: ParseConstants.URL.BaseURL)!)
         request.addValue(ParseConstants.APIHeaderValues.AppID, forHTTPHeaderField: ParseConstants.APIHeaderKeys.ID)
         request.addValue(ParseConstants.APIHeaderValues.ApiKey, forHTTPHeaderField: ParseConstants.APIHeaderKeys.key)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
+       
+        //Make the request
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
             
-            if error != nil { // Handle error...TODO
+            func sendError(_ error: String) {
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForGET(nil, NSError(domain: "Parse Client (taskForGETMethod)", code: 1, userInfo: userInfo))
+            }
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(String(describing: error))")
                 return
             }
-            
-            print(String(data: data!, encoding: .utf8)!)
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx.")
+                return
+            }
+            guard let data = data else {
+                sendError("No data was returned by the request.")
+                return
+            }
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
         }
         
         task.resume()
         return task
-        
+
     }
     
     //POST
@@ -56,11 +70,11 @@ class ParseClient: NSObject {
         
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             func sendError( _error: String) {
-                let userData = [NSLocalizedDescriptionKey : error]
-                completionHandlerForPOST(nil, NSError(domain: "ParseClient (taskForPOSTMethod)", code: 1, userInfo: userData))
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForPOST(nil, NSError(domain: "ParseClient (taskForPOSTMethod)", code: 1, userInfo: userInfo as [String : Any]))
             }
             guard (error == nil) else {
-                sendError(_error: "There was an error with your request: \(error)")
+                sendError(_error: "There was an error with your request: \(String(describing: error))")
                 return
             }
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
@@ -98,7 +112,7 @@ class ParseClient: NSObject {
                 completionHandlerForPUT(nil, NSError(domain: "Parse Client (taskForPOSTMethod)", code: 1, userInfo: userInfo))
             }
             guard (error==nil) else {
-                sendError("There was an error with your request: \(error)")
+                sendError("There was an error with your request: \(String(describing: error))")
                 return
             }
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
@@ -124,9 +138,21 @@ class ParseClient: NSObject {
         do {
             parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
         } catch {
+            
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
         }
+        
         completionHandlerForConvertData(parsedResult, nil)
+    }
+    
+    // MARK: Shared Instance
+    class func sharedInstance() -> ParseClient {
+        struct Singleton {
+            static var sharedInstance = ParseClient()
+        }
+        
+        return Singleton.sharedInstance
+        
     }
 }
