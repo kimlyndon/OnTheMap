@@ -17,7 +17,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     @IBOutlet weak var LoginButton: UIButton!
-//SignUP needs to be changed from label to button on storyboard.main and outlet created.
+    @IBOutlet weak var SignUpButton: UIButton!
+    
     
    
     override func viewDidLoad() {
