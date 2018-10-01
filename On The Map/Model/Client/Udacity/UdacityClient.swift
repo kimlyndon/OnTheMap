@@ -8,54 +8,74 @@
 
 import Foundation
 
-class UdacityClient {
+class UdacityClient : NSObject {
     
     //Mark Properties
-    var sessionID: String?
+    var session = URLSession.shared
+    var sessionID: String? = nil
 
-    static var sharedInstance = UdacityClient()
+    
+//MARK: Initializers
+    override init() {
+        super.init()
+        
+    }
+    
        
 
 
 // MARK: Methods
     
-    // Login using Udacity credentials
-    func login(_ username: String, password: String, completionHandler: @escaping (_ sessionID: String?) -> Void) {
-        
-        var request = URLRequest(url: URL(string: UdacityConstants.UdacityURL.BaseURL)!)
-        
-        request.httpMethod = UdacityConstants.HttpMethod.Post
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"udacity\": {\"username\": \"account@domain.com\", \"password\": \"********\"}}".data(using: .utf8)
-        
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if error != nil { // Handle error: TODO
-                return
+
+                
             }
             
-            // Skip first 5 characters of data
-            let range = Range(5..<data!.count)
-            let newData = data?.subdata(in: range)
-            print(String(data: newData!, encoding: .utf8)!)
+    
             
-        }
-        
-        
-        task.resume()
-        
-    }
-    
-   
-    
-//func taskForPOSTASesson() {}
-
-  }
-
+//func taskForPostSession {}
 
 //func taskForDeleteSession {}
 
+//MARK: Helpers
 
+private func udacityURLFromParameters(_ method: String, parameter: String? = nil) -> URL {
+    
+    var components = URLComponents()
+    components.scheme = UdacityConstants.UdacityURL.ApiScheme
+    components.host = UdacityConstants.UdacityURL.ApiHost
+    
+    if parameter != nil {
+        components.path = UdacityConstants.UdacityURL.ApiPath + method + "/" + parameter!
+    } else {
+        components.path = UdacityConstants.UdacityURL.ApiPath + (method)
+    }
+    return components.url!
+}
+
+private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+    
+    var parsedResult: AnyObject! = nil
+    do {
+        // Skip first 5 characters of data
+        let range = Range(5..<data.count)
+        let newData = data.subdata(in: range)
+        print(String(data: newData, encoding: .utf8)!)
+        //print(NSString(data: newData, encoding: String.Encoding.utf8.rawValue)!)
+        parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject
+    } catch {
+        let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
+        completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+    }
+    completionHandlerForConvertData(parsedResult, nil)
+}
+
+// MARK: Shared Instance
+
+ func sharedInstance() -> UdacityClient {
+    struct Singleton {
+        static var sharedInstance = UdacityClient()
+}
+return Singleton.sharedInstance
+
+}
 
