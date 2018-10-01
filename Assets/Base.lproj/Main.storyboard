@@ -44,8 +44,8 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IS5-8H-qZR">
-                                <rect key="frame" x="97" y="230" width="181" height="14.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IS5-8H-qZR">
+                                <rect key="frame" x="119.66666666666669" y="230" width="136" height="14.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -59,10 +59,17 @@
                                     <action selector="userDidTapView:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="fTO-Hp-sCH"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZh-Qz-AKw">
+                                <rect key="frame" x="279" y="223" width="41" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="SignUp"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jJI-0l-uRz" firstAttribute="leading" secondItem="6CW-WF-yyP" secondAttribute="leading" constant="33" id="22J-zX-OP6"/>
+                            <constraint firstItem="rZh-Qz-AKw" firstAttribute="top" secondItem="tZw-67-AAa" secondAttribute="bottom" constant="1" id="9fu-22-Xft"/>
                             <constraint firstItem="IS5-8H-qZR" firstAttribute="top" secondItem="tZw-67-AAa" secondAttribute="bottom" constant="8" id="E8I-es-K7H"/>
                             <constraint firstItem="IS5-8H-qZR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HJe-EZ-Kgk"/>
                             <constraint firstItem="tZw-67-AAa" firstAttribute="top" secondItem="1fT-gd-Pkt" secondAttribute="bottom" constant="8" symbolic="YES" id="NML-qW-ziI"/>
@@ -78,6 +85,7 @@
                             <constraint firstItem="6CW-WF-yyP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pUH-aK-xP3"/>
                             <constraint firstItem="jJI-0l-uRz" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tZw-67-AAa" secondAttribute="trailing" id="paw-FF-AlZ"/>
                             <constraint firstItem="jJI-0l-uRz" firstAttribute="centerX" secondItem="v7p-wO-gmg" secondAttribute="centerX" id="seo-mX-lDD"/>
+                            <constraint firstItem="rZh-Qz-AKw" firstAttribute="leading" secondItem="IS5-8H-qZR" secondAttribute="trailing" constant="23.333333333333314" id="xFn-hp-FIW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6CW-WF-yyP" secondAttribute="trailing" constant="16" id="xvv-8l-wZl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
