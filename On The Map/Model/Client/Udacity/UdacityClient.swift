@@ -25,16 +25,135 @@ class UdacityClient : NSObject {
 
 
 // MARK: Methods
+    //GET
     
-
-                
+    func taskForGetMethod(_ method: String, parameters: String, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+        
+        //Build URL, configure request
+        let request = NSMutableURLRequest(url: udacityURLFromParameters(method, parameter: parameters))
+        //Make request
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForGET(nil, NSError(domain: "UdacityClient (taskForGETMethod", code: 1, userInfo: userInfo))
+            }
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error)")
+                return
             }
             
-    
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2XX.")
+                return
+            }
             
-//func taskForPostSession {}
-
-//func taskForDeleteSession {}
+            guard let data = data else {
+                sendError("No data was returned by the request.")
+                return
+            }
+            
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+        }
+        
+        task.resume()
+        return task
+    }
+            
+    //MARK: POST
+    func taskForPostMethod(_ method: String, parameters: [String: AnyObject], completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+        
+        //Convert dictionary to JSON
+        let requestBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        
+        //Build URL, configure rquest
+        let request = NSMutableURLRequest(url: udacityURLFromParameters(method))
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = requestBody
+        
+        //Make request
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForPOST(nil, NSError(domain: "UdacityClient (taskforPOSTMethod)", code: 1, userInfo: userInfo))
+                }
+            
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2XX.")
+                return
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request")
+                return
+            }
+            
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+        }
+        
+        task.resume()
+        return task
+    }
+    
+    //MARK: POST
+    func taskForDeleteSession(_ method: String, completionHandlerForDELETE: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+        
+        //Build URL, Configure request
+        let request = NSMutableURLRequest(url: udacityURLFromParameters(method))
+        request.httpMethod = "DELETE"
+        
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            
+            if cookie.name == "XSRF-TOKEN" {
+                xsrfCookie = cookie
+            }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        //Make the request
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForDELETE(nil, NSError(domain: "UdacityClient (taskForDELETEMethod", code: 1, userInfo: userInfo))
+            }
+            
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2XX.")
+                return
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request.")
+                return
+            }
+            
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForDELETE)
+        }
+        
+        task.resume()
+        return task
+    }
 
 //MARK: Helpers
 
@@ -79,3 +198,4 @@ return Singleton.sharedInstance
 
 }
 
+}
