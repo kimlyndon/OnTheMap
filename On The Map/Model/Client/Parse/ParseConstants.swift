@@ -17,20 +17,31 @@ class ParseConstants {
         static let BaseURL: String = "https://parse.udacity.com/parse/classes/StudentLocation"
     }
     
+    struct Methods {
+        static let studentLocation = "/StudentLocation"
+        static let Session = "/session"
+        static let User = "/users"
+    }
+    
     
     struct APIHeaderKeys {
         static let ID = "X-Parse-Application-Id"
-        static let key = "X-Parse-REST-API-Key"
+        static let Key = "X-Parse-REST-API-Key"
+        static let xsrfToken = "X-XSRF-TOKEN"
+       
     }
     
     struct APIHeaderValues {
         static let AppID: String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         static let ApiKey: String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+       
     }
     
     struct URLRequest {
+        static let getMethod = "GET"
         static let postMethod = "POST"
         static let putMethod = "PUT"
+        static let deleteMethod = "DELETE"
         
     }
 
@@ -46,16 +57,28 @@ class ParseConstants {
         static let Latitude: String = "latitude"
         static let Longitude: String = "longitude"
         static let CreatedAt: String = "createdAt"
-        static let UpdatedAt: String = "updatedAt"
+        static let UpdatedAt: String = "-updatedAt"
         static let Error: String = "error"
         static let Results: String = "results"
     
     }
     
+    struct StudentLocationItem {
+        static let uniqueKey = "uniqueKey"
+        static let firstName = "firstName"
+        static let lastName = "lastName"
+        static let mapString = "mapString"
+        static let mediaURL = "mediaURL"
+        static let latitude = "latitude"
+        static let longitude = "longitude"
+    }
+    
     struct QueryItemKeys {
         static let limit = "limit"
         static let order = "order"
+        static let Where = "where"
         static let contentType = "Content-Type"
+        
     
     }
     
@@ -63,7 +86,7 @@ class ParseConstants {
         static let limit = "100"
         static let order = "-updatedAt"
         static let contentTypeValue = "application/json"
-    
+        
     }
     
   }
