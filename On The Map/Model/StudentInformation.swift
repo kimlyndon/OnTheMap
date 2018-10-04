@@ -33,5 +33,17 @@ struct StudentInformation {
         self.mediaURL = dictionary[ParseConstants.JSONResponseKeys.MediaURL] as? String
         self.createdAt = dictionary[ParseConstants.JSONResponseKeys.CreatedAt] as? String
         self.updatedAt = dictionary[ParseConstants.JSONResponseKeys.UpdatedAt] as? String
+        
+    }
+    
+    static func studentInformationFromResults(_ results: [[String: AnyObject]]) -> [StudentInformation] {
+        
+        var studentLocations = [StudentInformation]()
+        
+        for result in results {
+            studentLocations.append(StudentInformation(dictionary: result)!)
+        }
+        
+        return studentLocations
     }
 }
