@@ -29,13 +29,6 @@ class UdacityConstants  {
     
     }
     
-    struct Methods {
-        static let Session = "/session"
-        static let User = "/users"
-        
-        
-    }
-    
     struct APIBodyKeys {
         static let Udacity = "udacity"
         static let Username = "username"
@@ -56,7 +49,6 @@ class UdacityConstants  {
         static let Expiration = "expiration"
         
     }
-    
   }
 
 
