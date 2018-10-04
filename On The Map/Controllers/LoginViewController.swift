@@ -19,39 +19,21 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var SignUpButton: UIButton!
     
-    
-   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        EmailTextField.delegate = self
-        PasswordTextField.delegate = self
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configureTextFields()
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
+    @IBAction func LoginButtonPressed(_ sender: Any) {
+        UdacityClient.loginForPublicUserData(
+    
+    
 }
 
-// MARK:  LoginViewController: UITextFieldDelegate
-extension LoginViewController: UITextFieldDelegate{
-    
-    // MARK: UITextFieldDelegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    // MARK: Show/Hide Keyboard
-    
-    private func resignIfFirstResponder(_ textField: UITextField) {
-        if textField.isFirstResponder {
-            textField.resignFirstResponder()
-        }
+    @IBAction signUpPressed(_ sender: AnyObject) {
+    UIApplication.shared.open(URL(string: UdacityConstants.UdacityURL.SignUpURL)!), options: [:], completionHandler: nil)
     }
     
     @IBAction func userDidTapView(_ sender: AnyObject) {
@@ -59,4 +41,43 @@ extension LoginViewController: UITextFieldDelegate{
         resignIfFirstResponder(PasswordTextField)
 }
     
+    
+}
+
+extension UIViewController: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func resignIfFirstResponder(_ textField: UITextField) {
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
+        }
+    }
+    
+    func alert(title: String, message: String, source: UIViewController, completion: @escaping () -> Void) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .destructive, handler: nil)
+        
+        alertController.addAction(dismissAction)
+        source.present(alertController, animated: true, completion: completion)
+    }
+
+}
+
+    func configureTextFields() {
+        EmailTextField.delegate = self
+        PasswordTextField.delegate = self
+        EmailTextField.text = ""
+        PasswordTextField.text = ""
+}
+
+extension LoginVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+}
 }
