@@ -27,10 +27,10 @@ class UdacityClient : NSObject {
 // MARK: Methods
     //GET
     
-    func taskForGetMethod(_ method: String, parameters: String, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGETMethod(_ method: String, parameters: String, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         //Build URL, configure request
-        let request = NSMutableURLRequest(url: udacityURLFromParameters(method, parameter: parameters))
+        let request = NSMutableURLRequest(url: udacityURLFromParameters(method))
         //Make request
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
@@ -54,6 +54,28 @@ class UdacityClient : NSObject {
                 return
             }
             
+            let range = Range(5..<data.count)
+            let newData = data.subdata(in: range)
+            
+            var parsedJSON: AnyObject? = nil
+            
+            // Turn the raw data into JSON then a foundation object
+            do {
+                
+                let json = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject
+                parsedJSON = json
+                
+            } catch {
+                sendError("Could not turn raw data into a foundation object")
+            }
+            
+            guard let parsedResult = parsedJSON else {
+                sendError("parsedJSON did not fall through")
+                return
+                
+            }
+            
+            completionHandlerForGET(parsedResult, nil)
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
         }
         
@@ -62,7 +84,7 @@ class UdacityClient : NSObject {
     }
             
     //MARK: POST
-    func taskForPostMethod(_ method: String, parameters: [String: AnyObject], completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForPOSTMethod(_ method: String, parameters: [String: AnyObject], completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         //Convert dictionary to JSON
         let requestBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -106,7 +128,7 @@ class UdacityClient : NSObject {
     }
     
     //MARK: POST
-    func taskForDeleteSession(_ method: String, completionHandlerForDELETE: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForDELETESession(_ method: String, completionHandlerForDELETE: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         //Build URL, Configure request
         let request = NSMutableURLRequest(url: udacityURLFromParameters(method))
@@ -187,15 +209,30 @@ private func convertDataWithCompletionHandler(_ data: Data, completionHandlerFor
     }
     completionHandlerForConvertData(parsedResult, nil)
 }
+    
+    func myURLRequest(withBaseURLString urlString: String, headerFields headers: [String:String]?, HTTPMethod method: String, HTTPBody body: String?) -> URLRequest? {
+        
+        guard let url = URL(string: urlString) else { return nil }
+        
+        let request = NSMutableURLRequest(url: url)
+        request.httpMethod = method
+        if let jsonBody = body {
+            request.httpBody = jsonBody.data(using: .utf8)
+        }
+        
+        guard let headers = headers else { return request as URLRequest }
+        for (key, value) in headers {
+            request.addValue(value, forHTTPHeaderField: key)
+        }
+        return request as URLRequest
+    }
 
-// MARK: Shared Instance
-
- func sharedInstance() -> UdacityClient {
-    struct Singleton {
-        static var sharedInstance = UdacityClient()
-}
-return Singleton.sharedInstance
-
+    // MARK: Singleton
+    static func singleton() -> UdacityClient {
+        struct Singleton {
+            static var sharedInstance = UdacityClient()
+        }
+        return Singleton.sharedInstance
 }
 
 }
