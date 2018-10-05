@@ -24,6 +24,13 @@ class UdacityClient : NSObject {
     // MARK: Methods
     //GET
     
+    //NOTE FROM PHUC TRAN: sending request on server and get error, please use Alert to show error message like:
+    //func presentAlert(title: String = "Error", message: string, dismiss: ((UIAlertAction) -> Void))?) {
+    // let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    // let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: dismiss)
+    // contriller.addAction(dismissAction)
+    //present(controller.animated: true, completion: nil) }
+    
     func taskForGETMethod(_ method: String, parameters: String, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         //Build URL, configure request
@@ -125,6 +132,7 @@ class UdacityClient : NSObject {
     }
     
     //MARK: POST
+    //Note from Phuc Tran: send request to delete current session on server upon logout.
     func taskForDELETESession(_ method: String, completionHandlerForDELETE: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         //Build URL, Configure request

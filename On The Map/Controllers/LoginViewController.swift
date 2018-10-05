@@ -25,14 +25,14 @@ class LoginViewController: UIViewController {
         configureTextFields()
         
     }
-    
+    //Note from Phuc Tran: While checking credentials, disable login button. 
     @IBAction func LoginButtonPressed(_ sender: Any) {
-        UdacityClient.loginForPublicUserData(
+        UdacityClient.loginForPublicUserData()
     
     
 }
 
-    @IBAction signUpPressed(_ sender: AnyObject) {
+    @IBAction func signUpPressed(_ sender: AnyObject) {
     UIApplication.shared.open(URL(string: UdacityConstants.UdacityURL.SignUpURL)!), options: [:], completionHandler: nil)
     }
     
