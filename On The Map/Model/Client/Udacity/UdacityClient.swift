@@ -10,19 +10,16 @@ import Foundation
 
 class UdacityClient : NSObject {
     
+    var accountKey = ""
+    var sessionID = ""
+    var firstName = ""
+    var lastName = ""
+    
     //Mark Properties
-    var session = URLSession.shared
-    var sessionID: String? = nil
+    let session = URLSession.shared
     
-    
-    //MARK: Initializers
-    override init() {
-        super.init()
-        
-    }
     
     // MARK: Methods
-    //GET
     
     //NOTE FROM PHUC TRAN: sending request on server and get error, please use Alert to show error message like:
     //func presentAlert(title: String = "Error", message: string, dismiss: ((UIAlertAction) -> Void))?) {
@@ -30,172 +27,132 @@ class UdacityClient : NSObject {
     // let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: dismiss)
     // contriller.addAction(dismissAction)
     //present(controller.animated: true, completion: nil) }
+
     
-    func taskForGETMethod(_ method: String, parameters: String, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    //MARK: POST
+    func taskForPOSTLoginMethod(username: String, password: String, completionHandlerForPOSTLoginMethod: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         
-        //Build URL, configure request
-        let request = NSMutableURLRequest(url: udacityURLFromParameters(method))
+        //Build URL, configure rquest
+        var request = URLRequest(url: URL(string: UdacityConstants.UdacityURL.BaseURL)!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: .utf8)
+        
         //Make request
-        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
-            
-            func sendError(_ error: String) {
-                print(error)
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerForGET(nil, NSError(domain: "UdacityClient (taskForGETMethod", code: 1, userInfo: userInfo))
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                print("Error Message: \(String(describing: error!.localizedDescription))")
+                
+                completionHandlerForPOSTLoginMethod(nil, error!)
+                return
             }
+            // If an error occurs, print and renable UI
+            func displayError(_ error: String) {
+                print(error)
+            }
+            
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error)")
+                displayError("There was an error with your request: \(error)")
+                completionHandlerForPOSTLoginMethod(nil, error)
                 return
             }
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2XX.")
+                displayError("Your request returned a status code other than 2XX.")
+                completionHandlerForPOSTLoginMethod(nil, error)
                 return
             }
             
             guard let data = data else {
-                sendError("No data was returned by the request.")
+                displayError("No data was returned by the request")
+                completionHandlerForPOSTLoginMethod(nil, error)
                 return
             }
             
             let range = Range(5..<data.count)
             let newData = data.subdata(in: range)
-            
-            var parsedJSON: AnyObject? = nil
-            
-            // Turn the raw data into JSON then a foundation object
-            do {
-                
-                let json = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject
-                parsedJSON = json
-                
-            } catch {
-                sendError("Could not turn raw data into a foundation object")
-            }
-            
-            guard let parsedResult = parsedJSON else {
-                sendError("parsedJSON did not fall through")
-                return
-                
-            }
-            
-            completionHandlerForGET(parsedResult, nil)
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+            print(String(data: newData, encoding: .utf8)!)
+            completionHandlerForPOSTLoginMethod(newData, nil)
         }
         
         task.resume()
-        return task
     }
     
-    //MARK: POST
-    func taskForPOSTMethod(_ method: String, parameters: [String: AnyObject], completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    // MARK: GET
+    func taskForGETPubicUserData(userID: String, completionHandlerForGETPublicUserData: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         
-        //Convert dictionary to JSON
-        let requestBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        // Get method url (userID)
+        let methodURL = UdacityConstants.UdacityURL.PublicUserData
+        print("userID: \(userID)")
+        print("GET URL: \(methodURL)")
         
-        //Build URL, configure rquest
-        let request = NSMutableURLRequest(url: udacityURLFromParameters(method))
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = requestBody
-        
-        //Make request
-        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
-            
-            func sendError(_ error: String) {
-                print(error)
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerForPOST(nil, NSError(domain: "UdacityClient (taskforPOSTMethod)", code: 1, userInfo: userInfo))
-            }
-            
-            guard (error == nil) else {
-                sendError("There was an error with your request: \(error)")
+        let request = NSMutableURLRequest(url: URL(string: methodURL)!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil {
+                completionHandlerForGETPublicUserData(nil, error!)
                 return
             }
             
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2XX.")
-                return
-            }
-            
-            guard let data = data else {
-                sendError("No data was returned by the request")
-                return
-            }
-            
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            let range = Range(5..<data!.count)
+            let newData = data!.subdata(in: range)
+            print(String(data: newData, encoding: .utf8)!)
+            completionHandlerForGETPublicUserData(newData, nil)
         }
         
         task.resume()
-        return task
     }
-    
-    //MARK: POST
+  
     //Note from Phuc Tran: send request to delete current session on server upon logout.
-    func taskForDELETESession(_ method: String, completionHandlerForDELETE: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForDELETELogoutMethod() {
         
         //Build URL, Configure request
-        let request = NSMutableURLRequest(url: udacityURLFromParameters(method))
+        let request = NSMutableURLRequest(url: URL(string: UdacityConstants.UdacityURL.BaseURL)!)
         request.httpMethod = "DELETE"
         
         var xsrfCookie: HTTPCookie? = nil
         let sharedCookieStorage = HTTPCookieStorage.shared
         for cookie in sharedCookieStorage.cookies! {
             
-            if cookie.name == "XSRF-TOKEN" {
-                xsrfCookie = cookie
-            }
+            if cookie.name == "XSRF-TOKEN" {  xsrfCookie = cookie }
         }
         
         if let xsrfCookie = xsrfCookie {
             request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
         }
         //Make the request
-        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
-            
-            func sendError(_ error: String) {
-                print(error)
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerForDELETE(nil, NSError(domain: "UdacityClient (taskForDELETEMethod", code: 1, userInfo: userInfo))
-            }
-            
-            guard (error == nil) else {
-                sendError("There was an error with your request: \(error)")
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil {
                 return
             }
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2XX.")
+                print("Your request returned a status code other than 2XX.")
                 return
             }
             
             guard let data = data else {
-                sendError("No data was returned by the request.")
+                print("No data was returned by the request.")
                 return
             }
             
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForDELETE)
+            let range = Range(5..<data.count)
+            let newData = data.subdata(in: range)
+            print(String(data: newData, encoding: .utf8)!)
+            
+            print("User has successfully logged out")
+            
+            // Clear out user data after logout.
+            self.clearUserData()
         }
-        
-        task.resume()
-        return task
+            
+           task.resume()
+       
     }
     
     //MARK: Helpers
-    private func udacityURLFromParameters(_ method: String, parameter: String? = nil) -> URL {
-        
-        var components = URLComponents()
-        components.scheme = UdacityConstants.UdacityURL.ApiScheme
-        components.host = UdacityConstants.UdacityURL.ApiHost
-        
-        if parameter != nil {
-            components.path = UdacityConstants.UdacityURL.ApiPath + method + "/" + parameter!
-        } else {
-            components.path = UdacityConstants.UdacityURL.ApiPath + (method)
-        }
-        return components.url!
-    }
+
     
     private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
         
@@ -214,21 +171,26 @@ class UdacityClient : NSObject {
         completionHandlerForConvertData(parsedResult, nil)
     }
     
-    func myURLRequest(withBaseURLString urlString: String, headerFields headers: [String:String]?, HTTPMethod method: String, HTTPBody body: String?) -> URLRequest? {
+
         
-        guard let url = URL(string: urlString) else { return nil }
+    func clearUserData() {
+        // clear out all user data after successful logout
+        arrayOfStudentLocations = []
         
-        let request = NSMutableURLRequest(url: url)
-        request.httpMethod = method
-        if let jsonBody = body {
-            request.httpBody = jsonBody.data(using: .utf8)
-        }
+        StudentInformation.NewUserLocation.latitude = 0.0
+        StudentInformation.NewUserLocation.longitude = 0.0
+        StudentInformation.NewUserLocation.mapString = ""
+        StudentInformation.NewUserLocation.mediaURL = ""
         
-        guard let headers = headers else { return request as URLRequest }
-        for (key, value) in headers {
-            request.addValue(value, forHTTPHeaderField: key)
-        }
-        return request as URLRequest
+        StudentInformation.UserData.firstName = ""
+        StudentInformation.UserData.lastName = ""
+        StudentInformation.UserData.objectId = ""
+        StudentInformation.UserData.uniqueKey = ""
+        StudentInformation.UserData.mapString = ""
+        StudentInformation.UserData.mediaURL = ""
+        
+        StudentInformation.userLocationDictionary = [:]
+        
     }
     
     // MARK: Singleton
