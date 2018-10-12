@@ -17,7 +17,7 @@ class UdacityConstants  {
         static let ApiPath: String = "/api"
         static let BaseURL: String = "https://www.udacity.com/api/session"
         static let SignUpURL: String = "https://www.udacity.com/account/auth#!/signup"
-        static let PublicUserData: String = "https://www.udacity.com/api/users"
+        static let PublicUserData: String = "https://www.udacity.com/api/users/{user_id}"
             
     }
    
