@@ -36,6 +36,30 @@ struct StudentInformation {
         
     }
     
+    // Stores current user's data on most recent post
+    struct UserData {
+        static var uniqueKey = ParseConstants.StudentLocationItem.uniqueKey
+        static var firstName = ParseConstants.StudentLocationItem.firstName
+        static var lastName = ParseConstants.StudentLocationItem.lastName
+        static var objectId = ""
+        static var latitude = 0.0
+        static var longitude = 0.0
+        static var mapString = ""
+        static var mediaURL = ""
+    }
+    
+    // Location dictionary
+    static var userLocationDictionary : [String: AnyObject] = [
+        "objectIdd" : UserData.objectId as AnyObject,
+        "uniqueKey" : UserData.uniqueKey as AnyObject,
+        "firstName" : UserData.firstName as AnyObject,
+        "lastName" : UserData.lastName as AnyObject,
+        "latitude" : UserData.latitude as AnyObject,
+        "longitude" : UserData.longitude as AnyObject,
+        "mapString" : UserData.mapString as AnyObject,
+        "mediaURL" : UserData.mediaURL as AnyObject
+    ]
+    
     static func studentInformationFromResults(_ results: [[String: AnyObject]]) -> [StudentInformation] {
         
         var studentLocations = [StudentInformation]()
@@ -46,4 +70,13 @@ struct StudentInformation {
         
         return studentLocations
     }
+    
+    // New User Location (User adds new location)
+    struct NewUserLocation {
+        static var mapString = ""
+        static var mediaURL = ""
+        static var latitude = 0.0
+        static var longitude = 0.0
+    }
 }
+var arrayOfStudentLocations = [StudentInformation]()   
