@@ -75,6 +75,7 @@ class ParseConstants {
     
     struct QueryItemKeys {
         static let limit = "limit"
+        static let skip = "skip"
         static let order = "order"
         static let Where = "where"
         static let contentType = "Content-Type"
