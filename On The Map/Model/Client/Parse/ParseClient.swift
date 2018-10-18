@@ -8,8 +8,8 @@
 
 import Foundation
 
-class ParseClient: NSObject {
-    
+class ParseClient {
+    static let shared = ParseClient()
     //MARK: Properties
     var session = URLSession.shared
 
