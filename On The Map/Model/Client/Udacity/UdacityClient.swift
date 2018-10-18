@@ -8,7 +8,8 @@
 
 import Foundation
 
-class UdacityClient : NSObject {
+class UdacityClient {
+    static let shared = UdacityClient()
     
     var accountKey = ""
     var sessionID = ""
