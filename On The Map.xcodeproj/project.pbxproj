@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981CC4F721797BF8007E8530 /* LoginVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981CC4F621797BF8007E8530 /* LoginVCExtension.swift */; };
+		981CC4F921798179007E8530 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981CC4F821798179007E8530 /* SignUpViewController.swift */; };
 		983A0006214836330054D3F3 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A0005214836330054D3F3 /* GCDBlackBox.swift */; };
 		983A00082148447D0054D3F3 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A00072148447D0054D3F3 /* ParseConstants.swift */; };
 		983A000A214848230054D3F3 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A0009214848230054D3F3 /* UdacityConstants.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		981CC4F621797BF8007E8530 /* LoginVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCExtension.swift; sourceTree = "<group>"; };
+		981CC4F821798179007E8530 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		983A0005214836330054D3F3 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		983A00072148447D0054D3F3 /* ParseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		983A0009214848230054D3F3 /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
@@ -50,6 +54,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		981CC4FA21798279007E8530 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				983AFFEE214830C60054D3F3 /* LoginViewController.swift */,
+				981CC4F821798179007E8530 /* SignUpViewController.swift */,
+				981CC4FB217982F5007E8530 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		981CC4FB217982F5007E8530 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				981CC4F621797BF8007E8530 /* LoginVCExtension.swift */,
+				981CC4FC21798315007E8530 /* LocationInformation */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		981CC4FC21798315007E8530 /* LocationInformation */ = {
+			isa = PBXGroup;
+			children = (
+				98EE4AB3214B06CE00139A01 /* MapViewController.swift */,
+			);
+			path = LocationInformation;
+			sourceTree = "<group>";
+		};
 		983A00002148310B0054D3F3 /* Udacity */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,8 +102,7 @@
 		983A00022148313F0054D3F3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				983AFFEE214830C60054D3F3 /* LoginViewController.swift */,
-				98EE4AB3214B06CE00139A01 /* MapViewController.swift */,
+				981CC4FA21798279007E8530 /* Login */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -118,8 +148,8 @@
 		983AFFEB214830C60054D3F3 /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
-				983A00022148313F0054D3F3 /* Controllers */,
 				983AFFFE214830EC0054D3F3 /* Model */,
+				983A00022148313F0054D3F3 /* Controllers */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
@@ -214,8 +244,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				981CC4F921798179007E8530 /* SignUpViewController.swift in Sources */,
 				983A000E214AEE6A0054D3F3 /* StudentInformation.swift in Sources */,
 				983AFFEF214830C60054D3F3 /* LoginViewController.swift in Sources */,
+				981CC4F721797BF8007E8530 /* LoginVCExtension.swift in Sources */,
 				983A000A214848230054D3F3 /* UdacityConstants.swift in Sources */,
 				983A000C214993EE0054D3F3 /* UdacityClient.swift in Sources */,
 				98EE4AB4214B06CE00139A01 /* MapViewController.swift in Sources */,

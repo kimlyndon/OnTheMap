@@ -8,8 +8,7 @@
 
 import Foundation
 
-class UdacityClient {
-    static let shared = UdacityClient()
+class UdacityClient: NSObject{
     
     var accountKey = ""
     var sessionID = ""
@@ -26,7 +25,7 @@ class UdacityClient {
     //func presentAlert(title: String = "Error", message: string, dismiss: ((UIAlertAction) -> Void))?) {
     // let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
     // let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: dismiss)
-    // contriller.addAction(dismissAction)
+    // controller.addAction(dismissAction)
     //present(controller.animated: true, completion: nil) }
 
     
