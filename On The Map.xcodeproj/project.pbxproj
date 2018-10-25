@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981475BF218240AB00C0117C /* AddLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981475BE218240AB00C0117C /* AddLocationMapViewController.swift */; };
 		981CC4F721797BF8007E8530 /* LoginVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981CC4F621797BF8007E8530 /* LoginVCExtension.swift */; };
 		981CC4F921798179007E8530 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981CC4F821798179007E8530 /* SignUpViewController.swift */; };
 		983A0006214836330054D3F3 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983A0005214836330054D3F3 /* GCDBlackBox.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		981475BE218240AB00C0117C /* AddLocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationMapViewController.swift; sourceTree = "<group>"; };
 		981CC4F621797BF8007E8530 /* LoginVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCExtension.swift; sourceTree = "<group>"; };
 		981CC4F821798179007E8530 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		983A0005214836330054D3F3 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		98C9228C2180EA0B00575D86 /* LocationPosting */ = {
 			isa = PBXGroup;
 			children = (
+				981475BE218240AB00C0117C /* AddLocationMapViewController.swift */,
 				98C9228F2180EB4A00575D86 /* AddLocationViewController.swift */,
 			);
 			path = LocationPosting;
@@ -263,6 +266,7 @@
 				983A000C214993EE0054D3F3 /* UdacityClient.swift in Sources */,
 				98EE4AB4214B06CE00139A01 /* MapViewController.swift in Sources */,
 				98C922902180EB4A00575D86 /* AddLocationViewController.swift in Sources */,
+				981475BF218240AB00C0117C /* AddLocationMapViewController.swift in Sources */,
 				983A0006214836330054D3F3 /* GCDBlackBox.swift in Sources */,
 				983AFFED214830C60054D3F3 /* AppDelegate.swift in Sources */,
 				983A0010214B03150054D3F3 /* ParseClient.swift in Sources */,
