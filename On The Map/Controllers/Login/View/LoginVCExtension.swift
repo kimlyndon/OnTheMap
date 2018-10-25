@@ -12,6 +12,10 @@ import MapKit
 
 extension UIViewController {
     
+    //NOTE FROM PHUC TRAN: sending request on server and get error, please use Alert to show error message 
+    
+    
+    
     // MARK: Alerts
     func createAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

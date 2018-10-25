@@ -21,14 +21,7 @@ class UdacityClient: NSObject{
     
     // MARK: Methods
     
-    //NOTE FROM PHUC TRAN: sending request on server and get error, please use Alert to show error message like:
-    //func presentAlert(title: String = "Error", message: string, dismiss: ((UIAlertAction) -> Void))?) {
-    // let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    // let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: dismiss)
-    // controller.addAction(dismissAction)
-    //present(controller.animated: true, completion: nil) }
-
-    
+   
     //MARK: POST
     func taskForPOSTLoginMethod(username: String, password: String, completionHandlerForPOSTLoginMethod: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         
