@@ -200,6 +200,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4La-BM-NcC"/>
                     </view>
+                    <connections>
+                        <outlet property="finishButton" destination="Cfj-pk-dli" id="GSk-9d-axc"/>
+                        <outlet property="mapView" destination="7a7-oR-UmN" id="0cu-m2-A4E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQ5-Y1-CjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
