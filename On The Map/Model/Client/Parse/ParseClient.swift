@@ -136,6 +136,8 @@ class ParseClient {
         let urlString = ParseConstants.URL.BaseURL
         
         print("urlString for PUT: \(urlString)")
+        print("User Object ID for PUT: \(StudentInformation.UserData.objectId)")
+
         
         let url = URL(string: urlString)
         var request = URLRequest(url: url!)
@@ -178,7 +180,16 @@ class ParseClient {
         task.resume()
         return task
     }
-
+    
+    // substitute the key for the value that is contained within the method name
+    func substituteKeyInMethod(_ method: String, key: String, value: String) -> String? {
+        if method.range(of: ":\"\(key)}") != nil {
+            return method.replacingOccurrences(of: ":\"\(key)}", with: value)
+        } else {
+            return nil
+        }
+    }
+    
 // Parse data: Convert Data into JSON
 private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
     
