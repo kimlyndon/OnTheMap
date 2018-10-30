@@ -22,6 +22,7 @@
 		983AFFF4214830CB0054D3F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF3214830CB0054D3F3 /* Assets.xcassets */; };
 		983AFFF7214830CB0054D3F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 983AFFF5214830CB0054D3F3 /* LaunchScreen.storyboard */; };
 		988024A621527C110091BCF2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 988024A521527C110091BCF2 /* Info.plist */; };
+		98B72B232188835D003FEE51 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B72B222188835D003FEE51 /* ParseConvenience.swift */; };
 		98C922902180EB4A00575D86 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C9228F2180EB4A00575D86 /* AddLocationViewController.swift */; };
 		98EE4AB4214B06CE00139A01 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE4AB3214B06CE00139A01 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		983AFFF3214830CB0054D3F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983AFFF6214830CB0054D3F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		988024A521527C110091BCF2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98B72B222188835D003FEE51 /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
 		98C9228F2180EB4A00575D86 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		98EE4AB3214B06CE00139A01 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 			children = (
 				983A00072148447D0054D3F3 /* ParseConstants.swift */,
 				983A000F214B03150054D3F3 /* ParseClient.swift */,
+				98B72B222188835D003FEE51 /* ParseConvenience.swift */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				981CC4F921798179007E8530 /* SignUpViewController.swift in Sources */,
+				98B72B232188835D003FEE51 /* ParseConvenience.swift in Sources */,
 				983A000E214AEE6A0054D3F3 /* StudentInformation.swift in Sources */,
 				983AFFEF214830C60054D3F3 /* LoginViewController.swift in Sources */,
 				981CC4F721797BF8007E8530 /* LoginVCExtension.swift in Sources */,
