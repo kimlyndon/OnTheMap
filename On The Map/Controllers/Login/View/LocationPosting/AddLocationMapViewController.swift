@@ -161,7 +161,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
     
     //MARK: Methods
     func callPostToStudentLocation() {
-       ParseClient.sharedInstance().updateStudentLocation(newUserMapString: newLocation, newUserMediaURL: newURL, newUserLatitude: newLatitude, newUserLongitude: newLongitude, completionHandlerForLocationPOST: { (success, errorString) in
+       ParseClient.sharedInstance().postAStudentLocation(newUserMapString: newLocation, newUserMediaURL: newURL, newUserLatitude: newLatitude, newUserLongitude: newLongitude, completionHandlerForLocationPOST: { (success, errorString) in
             
             guard (success == true) else {
                 // display the errorString using createAlert
@@ -173,7 +173,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
             }
            print("Successfully POSTed user location.")
             
-            ParseClient.sharedInstance().getAStudentLocation() { (success, errorString) in
+            ParseClient.sharedInstance().getALocation() { (success, errorString) in
                 guard (success == true) else {
                     print("Unsuccessful in obtaining A Student Location from Parse: \(errorString)")
                     performUIUpdatesOnMain {
@@ -209,7 +209,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
     }
 
     func callPutToStudentLocation() {
-        ParseClient.sharedInstance().updateStudentLocation(newUserMapString: newLocation, newUserMediaURL: newURL, newUserLatitude: newLatitude, newUserLongitude: newLongitude, completionHandlerForLocationPUT: { (success, errorString) in
+        ParseClient.sharedInstance().putAStudentLocation(newUserMapString: newLocation, newUserMediaURL: newURL, newUserLatitude: newLatitude, newUserLongitude: newLongitude, completionHandlerForLocationPUT: { (success, errorString) in
             
             guard (success == true) else {
                 
@@ -235,7 +235,6 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
                 }
                 print("Successfully obtained Student Location data from Parse")
                 print("objectID: \(StudentInformation.UserData.objectId)")
-                print("Student AccountKey: \(UdacityClient.sharedInstance().accountKey)")
                 
                 
                 // MARK: Get 100 student locations from Parse
