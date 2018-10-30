@@ -2,7 +2,7 @@
 //  UdacityConvenience.swift
 //  On The Map
 //
-//  Created by Kim Lyndon on 10/4/18.
+//  Created by Kim Lyndon on 10/30/18.
 //  Copyright © 2018 Kim Lyndon. All rights reserved.
 //
 
@@ -11,35 +11,129 @@ import Foundation
 extension UdacityClient {
     
     
-    //Login
-    func loginForPublicUserData(email: String, password: String, completionHandlerForLogin: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+    // MARK: Convenience method for extracting account 'key' and session 'id'
+    func authenticateUser(myUserName: String, myPassword: String, completionHandlerForAuthenticateUser: @escaping (_ success:Bool, _ error:String) -> Void) {
         
-        let request = myURLRequest(withBaseURLString: UdacityConstants.UdacityURL.BaseURL, headerFields: ["Accept":"application/json", "Content-Type":"application/json"], HTTPMethod: "POST", HTTPBody: "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}")
-        
-        guard let urlRequest = request else {
-            let userInfo = [NSLocalizedDescriptionKey: "Invalid URL Request"]
-            completionHandlerForLogin(false, NSError(domain: "logiForPublicUserData", code: 1, userInfo: userInfo))
-            return
+        // Call taskForPOSTSession (from UdacityClient) and parse the JSON data
+        taskForPOSTLoginMethod(username: myUserName, password: myPassword) { (data, error) in
+            
+            // MARK: Extract account key and session id
+            // (1) Parse data
+            guard (error == nil) else {
+                // If Error - there is no network connection, display this message in  Alert Message.
+                print("GUARD in ERROR: MESSAGE: \(error!.localizedDescription)")
+                // if no data was returned, data = false and there is an error
+                completionHandlerForAuthenticateUser(false, UdacityConstants.ErrorMessages.NetworkConnectionError)
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                // If error is nil (see above), but no data returned, the username or password are incorrect (Alert Message)
+                print("GUARD in DATA: MESSAGE (Username or Password is incorrect).")
+                // if no data was returned, then data = false and there is an error
+                completionHandlerForAuthenticateUser(false, UdacityConstants.ErrorMessages.UsernamePasswordError)
+                return
+            }
+            
+            /*  Parse the data */
+            var parsedResult: [String:AnyObject]!
+            do {
+                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
+            } catch {
+                print("taskForPOSTLoginMethod: Failed to parse data.")
+                completionHandlerForAuthenticateUser(false, "Failed to parse data.")
+                return
+            }
+            
+            // (2) extract 'account' dictionary
+            guard let account = parsedResult["account"] as? [String:AnyObject] else {
+                completionHandlerForAuthenticateUser(false, "No valid account dictionary in parsed JSON data")
+                return
+            }
+            // (2a) extract account 'key' and save in accountKey
+            guard let myAccountKey = account["key"] as? String else {
+                completionHandlerForAuthenticateUser(false,"No valid key in account dictionary.")
+                return
+            }
+            
+            // IF correct login info, then these will display account key and session id.
+            // store account 'key'
+            print("account key: \(myAccountKey)")
+            self.accountKey = myAccountKey
+            
+            // (3) extract 'session' dictionary
+            guard let session = parsedResult["session"] as? [String:AnyObject] else {
+                completionHandlerForAuthenticateUser(false, "No valid session dictionary in pasrsed JSON data.")
+                return
+            }
+            // (3a) extract session 'id' and save in session ID
+            guard let mySessionID = session["id"] as? String else {
+                completionHandlerForAuthenticateUser(false, "No valid id in session dictinary.")
+                return
+            }
+            // store session 'id'
+            print("session id: \(mySessionID)")
+            self.sessionID = mySessionID
+            
+            // call completion handler
+            completionHandlerForAuthenticateUser(true, "")
         }
-    
-       
-
-    // Logout
-    func logout(completionHandlerForLogout: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
-    
-    let request = myURLRequest(withBaseURLString: UdacityConstants.UdacityURL.BaseURL, headerFields: nil, HTTPMethod: UdacityConstants.HttpMethod.Delete, HTTPBody: nil)
-    
-    var xsrfCookie: HTTPCookie? = nil
-    let sharedCookieStorage = HTTPCookieStorage.shared
-    for cookie in sharedCookieStorage.cookies! {
-        if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
     }
-    guard let cookie = xsrfCookie, var urlRequest = request else {
-        let userInfo = [NSLocalizedDescriptionKey:"Logout Fail"]
-        completionHandlerForLogout(false, NSError(domain: "logout", code: 1, userInfo: userInfo))
-        return
+    
+    
+    // MARK: Convenience method for extracting first name and last name from public user data
+    func getPublicUserData(completionHandlerForGETPublicUserData: @escaping (_ success:Bool, _ error:String)->Void) {
+        
+        // Call taskForGETPublicUserData (from UdacityClient) and parse the JSON data
+        taskForGETPublicUserData(userID: self.accountKey) {  (data, error) in
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                completionHandlerForGETPublicUserData(false, "No raw JSON data available to attempt JSONSerialization.")
+                return
+            }
+            
+            print("print 'data' for getPublicUserData: \(data)")
+            
+            /*  Parse the data */
+            var parsedResult: [String:AnyObject]!
+            do {
+                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
+            } catch {
+                print("taskForGETPublicUserData: Failed to parse data")
+                completionHandlerForGETPublicUserData(false, "Failed to parse data.")
+                return
+            }
+            
+            // (2) extract 'user' dictionary
+            guard let user = parsedResult["user"] as? [String:AnyObject] else {
+                completionHandlerForGETPublicUserData(false, "No valid 'user' dictionary in parsed JSON data")
+                return
+            }
+            // (2a) extract account 'last_name' and save in lastName
+            guard let lastName = user["last_name"] as? String else {
+                completionHandlerForGETPublicUserData(false,"No valid 'last_name' key in 'user' dictionary.")
+                return
+            }
+            // store last_name' 'key'
+            print("lastName: \(lastName)")
+            self.lastName = lastName
+            
+            // (3a) extract user 'first_name' and save in firstName
+            guard let firstName = user["first_name"] as? String else {
+                completionHandlerForGETPublicUserData(false, "No valid 'first_name' key in 'user' dictinary.")
+                return
+            }
+            // store user 'firstName'
+            print("firstName: \(firstName)")
+            self.firstName = firstName
+            
+            completionHandlerForGETPublicUserData(true, "")
+        }
+    }
+    
 }
-}
-}
-}
+
+
 
