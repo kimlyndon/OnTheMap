@@ -9,11 +9,13 @@
 import Foundation
 
 class UdacityClient: NSObject{
+
     
     var accountKey = ""
     var sessionID = ""
     var firstName = ""
     var lastName = ""
+
     
     //Mark Properties
     let session = URLSession.shared
@@ -73,7 +75,7 @@ class UdacityClient: NSObject{
     }
     
     // MARK: GET
-    func taskForGETPubicUserData(userID: String, completionHandlerForGETPublicUserData: @escaping (_ data: Data?, _ error: Error?) -> Void) {
+    func taskForGETPublicUserData(userID: String, completionHandlerForGETPublicUserData: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         
         // Get method url (userID)
         let methodURL = UdacityConstants.UdacityURL.PublicUserData
@@ -137,35 +139,12 @@ class UdacityClient: NSObject{
             print("User has successfully logged out")
             
             // Clear out user data after logout.
-            self.clearUserData()
+           self.clearUserData()
         }
             
            task.resume()
-       
     }
-    
-    //MARK: Helpers
 
-    
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
-        
-        var parsedResult: AnyObject! = nil
-        do {
-            // Skip first 5 characters of data
-            let range = Range(5..<data.count)
-            let newData = data.subdata(in: range)
-            print(String(data: newData, encoding: .utf8)!)
-            //print(NSString(data: newData, encoding: String.Encoding.utf8.rawValue)!)
-            parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject
-        } catch {
-            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
-        }
-        completionHandlerForConvertData(parsedResult, nil)
-    }
-    
-
-        
     func clearUserData() {
         // clear out all user data after successful logout
         arrayOfStudentLocations = []
@@ -185,13 +164,15 @@ class UdacityClient: NSObject{
         StudentInformation.userLocationDictionary = [:]
         
     }
-    
-    // MARK: Singleton
-    static func singleton() -> UdacityClient {
-        struct Singleton {
-            static var sharedInstance = UdacityClient()
-        }
-        return Singleton.sharedInstance
+
+// MARK: Shared Instance
+
+class func sharedInstance() -> UdacityClient {
+    struct Singleton {
+        static var sharedInstance = UdacityClient()
     }
-    
+    return Singleton.sharedInstance
 }
+
+}
+

@@ -7,9 +7,9 @@
 //
 
 import Foundation
+    
+class UdacityConstants {
 
-class UdacityConstants  {
-        
     
     struct UdacityURL {
         static let ApiScheme: String = "https"
@@ -49,6 +49,11 @@ class UdacityConstants  {
         static let Expiration = "expiration"
         
     }
-  }
+    
+    struct ErrorMessages {
+        static let UsernamePasswordError = "Login attempt failed. Please check your username or password."
+        static let NetworkConnectionError = "Login attempt failed. The Internet connection appears to be offline."
+      }
 
 
+}

@@ -18,9 +18,9 @@ class ParseConstants {
     }
     
     struct Methods {
-        static let studentLocation = "/StudentLocation"
         static let Session = "/session"
         static let User = "/users"
+        static let studentLocation = "/StudentLocation"
     }
     
     

@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
         
         // 2. Call 'authenticateUser'
        
-         UdacityClient.sharedInstance().authenticateUser(myUserName: username, myPassword: password) { (success, errorString) in
+        UdacityClient.sharedInstance().authenticateUser(myUserName: username, myPassword: password) { (success, errorString) in
             
             // if 'success' returned false then enter Guard Statement
             guard (success == true) else {
@@ -93,7 +93,7 @@ class LoginViewController: UIViewController {
                 print("Successfully obtained first and last name from Udacity Public User Data")
                 
                 // MARK: 4. Get the User Student location(s) 
-                ParseClient.sharedInstance().taskForGETALocation() { (success, errorString) in
+                ParseClient.sharedInstance().taskForGetALocation() { (success, errorString) in
                     guard (success == true) else {
                         print("Unsuccessful in obtaining A Student Location from Parse: \(errorString)")
                         
@@ -138,9 +138,6 @@ class LoginViewController: UIViewController {
      // Segue to Safari
     }
     
-
-
-
     
 private func completeLogin() {
     
