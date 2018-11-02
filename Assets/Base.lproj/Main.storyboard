@@ -113,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="p0O-7F-cwK">
-                                <rect key="frame" x="0.0" y="64" width="320" height="298"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                                 <connections>
                                     <outlet property="delegate" destination="JHU-kD-sBI" id="vgf-Un-9iW"/>
                                 </connections>
@@ -122,13 +122,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="p0O-7F-cwK" firstAttribute="leading" secondItem="6RY-C2-lf8" secondAttribute="leading" id="73l-wS-Vdz"/>
-                            <constraint firstItem="6RY-C2-lf8" firstAttribute="bottom" secondItem="p0O-7F-cwK" secondAttribute="bottom" constant="69" id="eYA-jq-x2u"/>
+                            <constraint firstItem="6RY-C2-lf8" firstAttribute="bottom" secondItem="p0O-7F-cwK" secondAttribute="bottom" id="eYA-jq-x2u"/>
                             <constraint firstItem="p0O-7F-cwK" firstAttribute="top" secondItem="6RY-C2-lf8" secondAttribute="top" id="lOz-xA-Fn3"/>
                             <constraint firstItem="p0O-7F-cwK" firstAttribute="trailing" secondItem="6RY-C2-lf8" secondAttribute="trailing" id="v5K-Vf-oJB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6RY-C2-lf8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" image="icon_mapview-selected" selectedImage="icon_listview-deselected" id="0cg-8L-O4h"/>
+                    <tabBarItem key="tabBarItem" title="List" image="icon_mapview-selected" selectedImage="icon_listview-deselected" id="QKy-rB-WNd"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="p0O-7F-cwK" id="fOk-qo-uYD"/>
                     </connections>
@@ -192,7 +193,13 @@
         <scene sceneID="9qh-JD-ttQ">
             <objects>
                 <tabBarController id="geQ-m3-0Ck" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="el0-XI-zx7"/>
+                    <navigationItem key="navigationItem" id="el0-XI-zx7">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="3CU-Yr-W1J"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add" image="icon_addpin" id="CX9-TZ-xb0"/>
+                            <barButtonItem title="Refresh" image="icon_refresh" id="hHh-Bb-ibX"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M82-7G-2Q1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -230,14 +237,14 @@
                                                 <constraint firstAttribute="height" constant="43.5" id="hDO-ty-Jtq"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uP6-Xp-KZP">
-                                            <rect key="frame" x="42" y="0.0" width="62" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uP6-Xp-KZP">
+                                            <rect key="frame" x="42" y="0.0" width="63" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zig-6A-W5t">
-                                            <rect key="frame" x="42" y="22" width="81" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zig-6A-W5t">
+                                            <rect key="frame" x="44" y="22" width="59" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -246,15 +253,14 @@
                                     <constraints>
                                         <constraint firstItem="byt-ZP-heZ" firstAttribute="leading" secondItem="6bj-Rt-BAa" secondAttribute="leading" id="1bN-I8-vtu"/>
                                         <constraint firstItem="uP6-Xp-KZP" firstAttribute="leading" secondItem="byt-ZP-heZ" secondAttribute="trailing" id="2Bg-Bx-Nc8"/>
-                                        <constraint firstAttribute="trailing" secondItem="uP6-Xp-KZP" secondAttribute="trailing" constant="216" id="5bh-bg-jfe"/>
-                                        <constraint firstAttribute="trailing" secondItem="Zig-6A-W5t" secondAttribute="trailing" constant="197" id="98w-YL-qKM"/>
-                                        <constraint firstItem="Zig-6A-W5t" firstAttribute="leading" secondItem="byt-ZP-heZ" secondAttribute="trailing" id="Hlu-cx-AJl"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uP6-Xp-KZP" secondAttribute="trailing" id="5bh-bg-jfe"/>
                                         <constraint firstItem="uP6-Xp-KZP" firstAttribute="top" secondItem="6bj-Rt-BAa" secondAttribute="top" id="JCY-dh-n5y"/>
+                                        <constraint firstItem="Zig-6A-W5t" firstAttribute="centerX" secondItem="uP6-Xp-KZP" secondAttribute="centerX" id="aA7-pI-eFj"/>
                                         <constraint firstAttribute="trailing" secondItem="byt-ZP-heZ" secondAttribute="trailing" constant="278" id="ab3-RY-e9W"/>
-                                        <constraint firstAttribute="bottom" secondItem="Zig-6A-W5t" secondAttribute="bottom" constant="0.5" id="dO3-Zf-PfI"/>
-                                        <constraint firstItem="Zig-6A-W5t" firstAttribute="top" secondItem="uP6-Xp-KZP" secondAttribute="bottom" constant="1" id="kVd-k9-o1u"/>
+                                        <constraint firstItem="Zig-6A-W5t" firstAttribute="leading" secondItem="byt-ZP-heZ" secondAttribute="trailing" constant="2" id="i6y-JB-iPe"/>
                                         <constraint firstItem="byt-ZP-heZ" firstAttribute="top" secondItem="6bj-Rt-BAa" secondAttribute="top" id="npM-Gc-SQk"/>
                                         <constraint firstAttribute="bottom" secondItem="byt-ZP-heZ" secondAttribute="bottom" id="pY8-Qg-flO"/>
+                                        <constraint firstItem="Zig-6A-W5t" firstAttribute="top" secondItem="uP6-Xp-KZP" secondAttribute="bottom" constant="1" id="tSQ-ZO-Cdm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -363,11 +369,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_addpin" width="24" height="24"/>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_listview-selected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
         <image name="icon_pin" width="24" height="24"/>
+        <image name="icon_refresh" width="24" height="24"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>
 </document>
