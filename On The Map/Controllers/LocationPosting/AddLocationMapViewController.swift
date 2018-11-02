@@ -184,7 +184,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
                 }
                 print("Successfully obtained Student Location data from Parse")
                 print("objectID: \(StudentInformation.UserData.objectId)")
-                print("Student AccountKey: \(UdacityClient.sharedInstance.accountKey)")
+                print("Student AccountKey: \(UdacityClient.sharedInstance().accountKey)")
                 
                 
                 // MARK: Get 100 student locations from Parse

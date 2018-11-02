@@ -67,7 +67,6 @@
 			children = (
 				983AFFEE214830C60054D3F3 /* LoginViewController.swift */,
 				981CC4F821798179007E8530 /* SignUpViewController.swift */,
-				981CC4FB217982F5007E8530 /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -76,8 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				981CC4F621797BF8007E8530 /* LoginVCExtension.swift */,
-				981CC4FC21798315007E8530 /* LocationInformation */,
-				98C9228C2180EA0B00575D86 /* LocationPosting */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -114,6 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				981CC4FA21798279007E8530 /* Login */,
+				981CC4FB217982F5007E8530 /* View */,
+				98C9228C2180EA0B00575D86 /* LocationPosting */,
+				981CC4FC21798315007E8530 /* LocationInformation */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

@@ -17,6 +17,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var SignUpButton: UIButton!
     
+    @IBOutlet weak var logoImage: UIImageView!
+    
+    
     //MARK: Properties
     var keyboardVisible = false
     
@@ -93,9 +96,9 @@ class LoginViewController: UIViewController {
                 print("Successfully obtained first and last name from Udacity Public User Data")
                 
                 // MARK: 4. Get the User Student location(s) 
-                ParseClient.sharedInstance().taskForGetALocation() { (success, errorString) in
-                    guard (success == true) else {
-                        print("Unsuccessful in obtaining A Student Location from Parse: \(errorString)")
+                ParseClient.sharedInstance().taskForGetALocation() { (data, errorString) in
+                    guard data != nil else {
+                        print("Unsuccessful in obtaining A Student Location from Parse: \(String(describing: errorString))")
                         
                         performUIUpdatesOnMain {
                             self.createAlert(title: "Error", message: "Unable to obtain Student Location data.")
@@ -112,10 +115,10 @@ class LoginViewController: UIViewController {
                     
                     
                     // MARK: 5. Get 100 student locations from Parse
-                    ParseClient.sharedInstance().taskForGETLocationsRequest() { (success, errorString) in
+                    ParseClient.sharedInstance().taskForGETLocationsRequest() { (data, errorString) in
                         
                         guard (success == true) else {
-                            print("Unsuccessful in obtaining Student Locations from Parse: \(errorString)")
+                            print("Unsuccessful in obtaining Student Locations from Parse: \(String(describing: errorString))")
                             
                             performUIUpdatesOnMain {
                                 self.createAlert(title: "Error", message: "Failure to download student locations data.")
