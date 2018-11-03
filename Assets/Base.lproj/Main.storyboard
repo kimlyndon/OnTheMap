@@ -210,14 +210,23 @@
             <objects>
                 <tabBarController id="geQ-m3-0Ck" customClass="TabBarViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="el0-XI-zx7">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="3CU-Yr-W1J"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="3CU-Yr-W1J">
+                            <connections>
+                                <action selector="logoutButtonTapped:" destination="geQ-m3-0Ck" id="QHa-v5-QG3"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Add" image="icon_addpin" id="CX9-TZ-xb0">
                                 <connections>
-                                    <segue destination="tB2-tt-heV" kind="presentation" id="gEk-29-SnR"/>
+                                    <action selector="addBarButtonTapped:" destination="geQ-m3-0Ck" id="yxd-r1-qVs"/>
+                                    <segue destination="tB2-tt-heV" kind="presentation" identifier="AddButtonSegue" id="gEk-29-SnR"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Refresh" image="icon_refresh" id="hHh-Bb-ibX"/>
+                            <barButtonItem title="Refresh" image="icon_refresh" id="hHh-Bb-ibX">
+                                <connections>
+                                    <action selector="refreshBarButtonTapped:" destination="geQ-m3-0Ck" id="XTJ-Su-ALw"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M82-7G-2Q1">
@@ -226,6 +235,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="addBarButton" destination="CX9-TZ-xb0" id="vgg-ln-xrw"/>
+                        <outlet property="logoutBarButton" destination="3CU-Yr-W1J" id="FUl-Pe-sWf"/>
+                        <outlet property="refreshBarButton" destination="hHh-Bb-ibX" id="uXx-0I-fd1"/>
                         <segue destination="JHU-kD-sBI" kind="relationship" relationship="viewControllers" id="RSK-EF-BTm"/>
                         <segue destination="Nsy-af-B8x" kind="relationship" relationship="viewControllers" id="AqP-ka-Y2Z"/>
                     </connections>
