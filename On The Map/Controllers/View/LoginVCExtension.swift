@@ -50,7 +50,7 @@ extension UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification:Notification) {
-        //self.view.frame.origin.y =  getKeyboardHeight(notification) * -0.3
+        
         
     }
     
