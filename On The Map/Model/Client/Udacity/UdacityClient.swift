@@ -78,7 +78,7 @@ class UdacityClient: NSObject{
     func taskForGETPublicUserData(userID: String, completionHandlerForGETPublicUserData: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         
         // Get method url (userID)
-        let methodURL = UdacityConstants.UdacityURL.PublicUserData
+        let methodURL = "https://www.udacity.com/api/users/\(userID)"
         print("userID: \(userID)")
         print("GET URL: \(methodURL)")
         

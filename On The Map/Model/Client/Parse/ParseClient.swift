@@ -51,7 +51,7 @@ class ParseClient {
     //MARK: GET Multiple student locations requests.
     func taskForGETLocationsRequest(completionHandlerForGETLocationsRequest : @escaping (_ data: Data?, _ error: Error?) -> Void) {
         
-        var request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=100&order=-updatedAt")!)
+        var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=100&order=-updatedAt")!)
         
         request.addValue(ParseConstants.APIHeaderValues.AppID, forHTTPHeaderField: ParseConstants.APIHeaderKeys.ID)
         request.addValue(ParseConstants.APIHeaderValues.ApiKey, forHTTPHeaderField: ParseConstants.APIHeaderKeys.Key)
