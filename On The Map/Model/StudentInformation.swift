@@ -36,6 +36,18 @@ struct StudentInformation {
         
     }
     
+    static func studentInformationFromResults(_ results: [[String: AnyObject]]) -> [StudentInformation] {
+        
+        var studentLocations = [StudentInformation]()
+        
+        for result in results {
+            studentLocations.append(StudentInformation(dictionary: result)!)
+        }
+        
+        return studentLocations
+    }
+   
+    
     // Stores current user's data on most recent post
     struct UserData {
         static var uniqueKey = ParseConstants.StudentLocationItem.uniqueKey
@@ -60,23 +72,27 @@ struct StudentInformation {
         "mediaURL" : UserData.mediaURL as AnyObject
     ]
     
-    static func studentInformationFromResults(_ results: [[String: AnyObject]]) -> [StudentInformation] {
+    // Given an array of dictionaries, convert them to an array of StudentLocation objects
+    static func userLocationFromResults(_ results: [[String:AnyObject]]) -> [StudentInformation] {
         
-        var studentLocations = [StudentInformation]()
+        var userLocations = [StudentInformation]()
         
+        // iterate through array 
         for result in results {
-            studentLocations.append(StudentInformation(dictionary: result)!)
+            userLocations.append(StudentInformation(dictionary: result)!)
         }
-        
-        return studentLocations
+    
+        return userLocations
     }
     
-    // New User Location (User adds new location)
+   // New User Location (User adds new location)
     struct NewUserLocation {
         static var mapString = ""
         static var mediaURL = ""
         static var latitude = 0.0
         static var longitude = 0.0
     }
+
 }
-var arrayOfStudentLocations = [StudentInformation]()   
+
+ var arrayOfStudentLocations = [StudentInformation]()
