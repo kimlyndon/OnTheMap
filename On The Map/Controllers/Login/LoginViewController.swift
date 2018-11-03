@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
             print("Successfully authenicated the Udacity user.")
             
             // 3. Call 'getPublicUserData (Get first and last name to store in UdacityClient)
-            UdacityClient.sharedInstance().getPublicUserData() { (success, errorString) in
+            UdacityClient.sharedInstance().getPublicUserData() { (data, errorString) in
                 guard (success == true) else {
                 
                     print("Unsuccessful in obtaining firstName and lastName from Udacity Public User Data: \(errorString)")

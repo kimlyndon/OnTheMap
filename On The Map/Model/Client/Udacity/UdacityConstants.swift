@@ -7,6 +7,7 @@
 //
 
 import Foundation
+extension UdacityClient {
     
 class UdacityConstants {
 
@@ -17,7 +18,7 @@ class UdacityConstants {
         static let ApiPath: String = "/api"
         static let BaseURL: String = "https://www.udacity.com/api/session"
         static let SignUpURL: String = "https://www.udacity.com/account/auth#!/signup"
-        static let PublicUserData: String = "https://www.udacity.com/api/users/user_id"
+        static let PublicUserData: String = "https://www.udacity.com/api/users/{user_id}"
             
     }
    
@@ -30,7 +31,7 @@ class UdacityConstants {
     }
     
     struct APIBodyKeys {
-        static let Udacity = "udacity"
+        static let Udacity = [Username:Password]
         static let Username = "username"
         static let Password = "password"
         static let AccessToken = "access_token"
@@ -47,6 +48,7 @@ class UdacityConstants {
         static let FirstName = "first_name"
         static let LastName = "last_name"
         static let Expiration = "expiration"
+        static let userID = "user_id"
         
     }
     
@@ -56,4 +58,5 @@ class UdacityConstants {
       }
 
 
+}
 }
