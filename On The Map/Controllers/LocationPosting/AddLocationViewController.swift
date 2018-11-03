@@ -133,7 +133,7 @@ class AddLocationViewController: UIViewController {
             
             print("Entering Segue")
             
-            let addLocationMapVC = self.storyboard?.instantiateViewController(withIdentifier: "AddLocationMapViewController") as! AddLocationViewController
+            let addLocationMapVC = self.storyboard?.instantiateViewController(withIdentifier: "AddLocationMapViewController") as! AddLocationMapViewController
             
             self.navigationController?.pushViewController(addLocationMapVC, animated: true)
         }
