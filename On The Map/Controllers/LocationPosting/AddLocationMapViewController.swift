@@ -76,7 +76,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
         }
         
         //Mentor: "When the array is complete, we add the annotations to the map. There is only one item in the array: User's new location."
-        self.mapView.addAnnotation(annotations as! MKAnnotation)
+        self.mapView.addAnnotations(annotations)
         
         let initialLocation = CLLocation(latitude: newLatitude, longitude: newLongitude)
         
@@ -174,12 +174,12 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
             }
            print("Successfully POSTed user location.")
             
-            ParseClient.sharedInstance().getALocation() { (success, errorString) in
+            ParseClient.sharedInstance().getALocation() { (data, errorString) in
                 guard (success == true) else {
                     print("Unsuccessful in obtaining A Student Location from Parse: \(errorString)")
                     performUIUpdatesOnMain {
             
-                        self.createAlert(title: "Error", message: "Failure to download user location data.")
+                        //self.createAlert(title: "Error", message: "Failure to download user location data.")
                     }
                     return
                 }
@@ -189,7 +189,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
                 
                 
                 // MARK: Get 100 student locations from Parse
-                ParseClient.sharedInstance().getLocationsRequest() { (success, errorString) in
+                ParseClient.sharedInstance().getLocationsRequest() { (data, errorString) in
                     
                     guard (success == true) else {
                     
@@ -239,7 +239,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
                 
                 
                 // MARK: Get 100 student locations from Parse
-                ParseClient.sharedInstance().getLocationsRequest() { (success, errorString) in
+                ParseClient.sharedInstance().getLocationsRequest() { (data, errorString) in
                     
                     guard (success == true) else {
                       
