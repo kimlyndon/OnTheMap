@@ -10,7 +10,7 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    var studentLocations = arrayOfStudentLocations
+    var arrayOfStudentLocations = [StudentInformation]()
     var annotations = [MKPointAnnotation]()
     
     @IBOutlet weak var mapView: MKMapView!
@@ -44,11 +44,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // We will create an MKPointAnnotation for each dictionary in "locations".
         var newAnnotations = [MKPointAnnotation]()
         
-        // This is an array of studentLocations (struct StudentLocation)
-        for student in studentLocations {
-            
-            let lat = CLLocationDegrees(student.latitude!)
-            let long = CLLocationDegrees(student.longitude!)
+        
+        // This is an array of studentLocations (struct StudentInformation)
+        for student in arrayOfStudentLocations {
+    
+           
+            let lat = CLLocationDegrees(student.latitude ?? 0)
+            let long = CLLocationDegrees(student.longitude ?? 0)
             
             // The lat and long are used to create a CLLocationCoordinates2D instance.
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -78,10 +80,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
         var annotations = [MKPointAnnotation]()
         
-        for student in studentLocations {
-            
-            let lat = CLLocationDegrees(student.latitude!)
-            let long = CLLocationDegrees(student.longitude!)
+        for student in arrayOfStudentLocations {
+           
+            let lat = CLLocationDegrees(student.latitude ?? 0)
+            let long = CLLocationDegrees(student.longitude ?? 0)
             
             // The lat and long are used to create a CLLocationCoordinates2D instance.
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)

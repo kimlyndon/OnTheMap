@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 struct StudentInformation {
     
     let objectId : String?
@@ -95,4 +96,8 @@ struct StudentInformation {
 
 }
 
- var arrayOfStudentLocations = [StudentInformation]()
+
+//MARK: Global variable
+
+var arrayOfStudentLocations = [StudentInformation]()
+ 

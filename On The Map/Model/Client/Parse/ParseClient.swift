@@ -9,9 +9,11 @@
 import Foundation
 
 class ParseClient {
+    
     static let shared = ParseClient()
     //MARK: Properties
     var session = URLSession.shared
+    
 
     //MARK: GET single student location request.
     func taskForGetALocation(completionHandlerForGETALocation: @escaping (_ data: Data?, _ error: Error?) -> Void) {
@@ -42,6 +44,7 @@ class ParseClient {
             }
         
             completionHandlerForGETALocation(data, nil)
+        
         }
         
         task.resume()

@@ -10,6 +10,8 @@ import Foundation
 
 extension ParseClient {
     
+   
+    
     //MARK: GET Convenience Methods (extract first and last name from public  user data)
     
     func getALocation(completionHandlerForGETALocation: @escaping (_ success: Bool, _ error: String) -> Void) {
@@ -105,6 +107,8 @@ extension ParseClient {
             // this is the only completion handler that has data set to true
             completionHandlerForGETALocation(true, "")
         }
+        
+       
     }
     
     //MARK: GET Convenience method for extracting multiple names from data.
@@ -222,6 +226,7 @@ extension ParseClient {
                 print("Are we getting here?")
                 
                 completionHandlerForLocationPUT(true, "Successful PUT")
+                
             }
         }
     }

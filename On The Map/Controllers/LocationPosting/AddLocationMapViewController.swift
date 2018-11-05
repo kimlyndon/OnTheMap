@@ -179,7 +179,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
                     print("Unsuccessful in obtaining A Student Location from Parse: \(errorString)")
                     performUIUpdatesOnMain {
             
-                        //self.createAlert(title: "Error", message: "Failure to download user location data.")
+                    self.createAlert(title: "Error", message: "Failure to download user location data.")
                     }
                     return
                 }
