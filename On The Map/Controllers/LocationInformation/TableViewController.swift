@@ -10,9 +10,6 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    //MARK: Properties
-    var studentLocations = arrayOfStudentLocations
-    
     //MARK: Outlets
     @IBOutlet weak var ListTableView: UITableView!
     
@@ -41,7 +38,7 @@ class TableViewController: UITableViewController {
         
         // Get cell type
         let cellReuseIdentifier = "TableViewCell"
-        let studentLocation = studentLocations[indexPath.row]
+        let studentLocation = arrayOfStudentLocations[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UITableViewCell
         
         //Set cell defaults
@@ -50,21 +47,21 @@ class TableViewController: UITableViewController {
         let mediaURL = studentLocation.mediaURL
         cell.textLabel!.text = "\(String(describing: first)) \(String(describing: last))"
         cell.imageView!.image = UIImage(named: "icon_pin")
-        cell.detailTextLabel!.text = mediaURL
+        cell.detailTextLabel?.text = mediaURL
         cell.imageView!.contentMode = UIViewContentMode.scaleAspectFit
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentLocations.count
+        return arrayOfStudentLocations.count
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         //Open mediaURL
         let app = UIApplication.shared
-        let url = studentLocations[indexPath.row].mediaURL
+        let url = arrayOfStudentLocations[indexPath.row].mediaURL
         
         print("verifyURL: \(verifyUrl(urlString: url))")
         

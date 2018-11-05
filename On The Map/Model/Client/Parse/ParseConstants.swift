@@ -48,9 +48,8 @@ class ParseConstants {
     struct JSONResponseKeys {
         static let ObjectId: String = "objectId"
         static let UniqueKey: String = "uniqueKey"
-        //Do not use real name
-        static let FirstName: String = "Carmen"
-        static let LastName: String = "Sandiego"
+        static let FirstName: String = "firstName"
+        static let LastName: String = "lastName"
         
         static let MapString: String = "mapString"
         static let MediaURL: String = "mediaURL"
