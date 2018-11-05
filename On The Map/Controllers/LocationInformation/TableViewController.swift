@@ -45,10 +45,10 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UITableViewCell
         
         //Set cell defaults
-        let first = studentLocation.firstName as! String
-        let last = studentLocation.lastName as! String
-        let mediaURL = studentLocation.mediaURL as! String
-        cell.textLabel!.text = "\(first) \(last)"
+        let first = studentLocation.firstName
+        let last = studentLocation.lastName
+        let mediaURL = studentLocation.mediaURL
+        cell.textLabel!.text = "\(String(describing: first)) \(String(describing: last))"
         cell.imageView!.image = UIImage(named: "icon_pin")
         cell.detailTextLabel!.text = mediaURL
         cell.imageView!.contentMode = UIViewContentMode.scaleAspectFit

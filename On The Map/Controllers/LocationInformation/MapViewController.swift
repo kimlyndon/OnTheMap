@@ -10,7 +10,6 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    var arrayOfStudentLocations = [StudentInformation]()
     var annotations = [MKPointAnnotation]()
     
     @IBOutlet weak var mapView: MKMapView!
