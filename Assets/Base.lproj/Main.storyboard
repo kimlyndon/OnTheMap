@@ -255,50 +255,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" id="U0I-Mg-lT0">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" textLabel="0MT-iV-0V6" detailTextLabel="Gfp-f2-1by" imageView="DDV-HB-OHA" style="IBUITableViewCellStyleSubtitle" id="U0I-Mg-lT0">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U0I-Mg-lT0" id="6bj-Rt-BAa" customClass="TableViewCell" customModule="On_The_Map" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pin" translatesAutoresizingMaskIntoConstraints="NO" id="byt-ZP-heZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="42" height="43.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="FR9-Mz-TLw"/>
-                                                <constraint firstAttribute="height" constant="43.5" id="hDO-ty-Jtq"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uP6-Xp-KZP">
-                                            <rect key="frame" x="42" y="0.0" width="99" height="21"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0MT-iV-0V6">
+                                            <rect key="frame" x="55" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mediaURLLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zig-6A-W5t">
-                                            <rect key="frame" x="44" y="22" width="95" height="16"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gfp-f2-1by">
+                                            <rect key="frame" x="55" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="icon_pin" id="DDV-HB-OHA">
+                                            <rect key="frame" x="16" y="9" width="24" height="24"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="byt-ZP-heZ" firstAttribute="leading" secondItem="6bj-Rt-BAa" secondAttribute="leading" id="1bN-I8-vtu"/>
-                                        <constraint firstItem="uP6-Xp-KZP" firstAttribute="leading" secondItem="byt-ZP-heZ" secondAttribute="trailing" id="2Bg-Bx-Nc8"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uP6-Xp-KZP" secondAttribute="trailing" id="5bh-bg-jfe"/>
-                                        <constraint firstItem="uP6-Xp-KZP" firstAttribute="top" secondItem="6bj-Rt-BAa" secondAttribute="top" id="JCY-dh-n5y"/>
-                                        <constraint firstItem="Zig-6A-W5t" firstAttribute="centerX" secondItem="uP6-Xp-KZP" secondAttribute="centerX" id="aA7-pI-eFj"/>
-                                        <constraint firstAttribute="trailing" secondItem="byt-ZP-heZ" secondAttribute="trailing" constant="278" id="ab3-RY-e9W"/>
-                                        <constraint firstItem="Zig-6A-W5t" firstAttribute="leading" secondItem="byt-ZP-heZ" secondAttribute="trailing" constant="2" id="i6y-JB-iPe"/>
-                                        <constraint firstItem="byt-ZP-heZ" firstAttribute="top" secondItem="6bj-Rt-BAa" secondAttribute="top" id="npM-Gc-SQk"/>
-                                        <constraint firstAttribute="bottom" secondItem="byt-ZP-heZ" secondAttribute="bottom" id="pY8-Qg-flO"/>
-                                        <constraint firstItem="Zig-6A-W5t" firstAttribute="top" secondItem="uP6-Xp-KZP" secondAttribute="bottom" constant="1" id="tSQ-ZO-Cdm"/>
-                                    </constraints>
-                                    <connections>
-                                        <outlet property="mediaURLLabel" destination="Zig-6A-W5t" id="Ip1-o2-Ezz"/>
-                                        <outlet property="nameLabel" destination="uP6-Xp-KZP" id="kwV-ES-wHM"/>
-                                        <outlet property="pinIcon" destination="byt-ZP-heZ" id="WzY-4w-g6u"/>
-                                    </connections>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
