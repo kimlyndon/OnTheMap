@@ -33,3 +33,5 @@ Tapping anywhere within the annotation will launch Safari and direct it to the l
 
 ## Requirements
 Xcode 8.0 Swift 3.0
+
+***AppIcon pic credit: freepik.com
