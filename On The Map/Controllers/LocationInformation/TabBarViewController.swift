@@ -18,16 +18,14 @@ class TabBarViewController: UITabBarController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(TabBarViewController.onRefreshData), name: NSNotification.Name(rawValue: "reloadData"), object: nil)
-        onRefreshData()
+        
 }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        refreshThings()
     
     }
     
@@ -42,7 +40,12 @@ class TabBarViewController: UITabBarController {
     }
     
     @IBAction func refreshBarButtonTapped(_ sender: UIBarButtonItem) {
-        print("refresh bar button pressed.")
+        refreshThings()
+    }
+    
+    func refreshThings() {
+        print("refresh bar button pressed")
+        
         
         //Create constants to prepare for refreshing the two view controllers
         let mapViewController = self.viewControllers?[0] as! MapViewController
@@ -75,11 +78,6 @@ class TabBarViewController: UITabBarController {
         //Segues to AddLocationViewController
         
         }
-    
-    @objc func onRefreshData() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
-        
-            }
 
     
     //MARK: Navigation (Per Mentor:)
