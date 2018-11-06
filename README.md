@@ -5,14 +5,14 @@ iOS Developer Nanodegree Project
 
 The On The Map is result of **iOS Networking with Swift** lesson of **Udacity's iOS Developer Nanodegree** course.
 
-The On The Map app allows udacity students to share their location and a URL with their fellow students. On The Map uses pins on a map to provide a visual representation of student locations. 
+The On The Map app allows Udacity students to share their location and a URL with their fellow students. On The Map uses pins on a map to provide a visual representation of student locations. 
 
 If the user is not a Udacity Student, there is a SignUp button provided on the login screen. The user will sign up, go back to the login screen, and proceed to login. 
 
 After logging in , a map appears with pins already populated via code to access the Udacity/Parse API which includes infomration previously posted by past users. Each pin contains a name and a custom URL which is verified within the code. After viewing the information posted by other students, a user can post their own location and link via the add (+) button.
 
 ## Implementation
-The app has five view controller scenes:
+The app has four view controller scenes:
 
 **Login** - allows the user to log in using their Udacity credentials or SignUp (via Safari on the Udacity page) to obtain credentials. 
 
