@@ -45,7 +45,7 @@ class TableViewController: UITableViewController {
         let first = studentLocation.firstName
         let last = studentLocation.lastName
         let mediaURL = studentLocation.mediaURL
-        cell.textLabel!.text = "\(String(describing: first)) \(String(describing: last))"
+        cell.textLabel!.text = "\(first ?? "") \(last ?? "")"
         cell.imageView!.image = UIImage(named: "icon_pin")
         cell.detailTextLabel?.text = mediaURL
         cell.imageView!.contentMode = UIViewContentMode.scaleAspectFit
