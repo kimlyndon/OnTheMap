@@ -216,7 +216,7 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Add" image="icon_addpin" id="CX9-TZ-xb0">
+                            <barButtonItem title="Add" image="icon_pin" id="CX9-TZ-xb0">
                                 <connections>
                                     <action selector="addBarButtonTapped:" destination="geQ-m3-0Ck" id="yxd-r1-qVs"/>
                                     <segue destination="tB2-tt-heV" kind="presentation" identifier="AddButtonSegue" id="gEk-29-SnR"/>
@@ -413,7 +413,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfj-pk-dli">
                                 <rect key="frame" x="20" y="430" width="280" height="30"/>
                                 <color key="backgroundColor" red="0.6814167055" green="0.002431147183" blue="0.18285207849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="FINISH">
+                                <state key="normal" title="SUBMIT">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -444,7 +444,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_addpin" width="24" height="24"/>
         <image name="icon_listview-selected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
         <image name="icon_pin" width="24" height="24"/>
