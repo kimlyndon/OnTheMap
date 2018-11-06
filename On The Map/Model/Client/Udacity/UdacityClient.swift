@@ -20,10 +20,10 @@ extension Optional where Wrapped == String {
 class UdacityClient: NSObject{
     
     
-   var accountKey = ""
-   var sessionId = ""
-   var firstName = ""
-   var lastName = ""
+    var accountKey : String? = ""
+    var sessionId : String? = ""
+    var firstName : String? = ""
+    var lastName : String? = ""
 
     
     //Mark Properties
