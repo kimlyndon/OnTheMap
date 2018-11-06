@@ -74,7 +74,7 @@ extension UdacityClient {
             }
             // store session 'id'
             print("session id: \(mySessionID)")
-            self.sessionID = mySessionID
+            self.sessionId = mySessionID
             
             // call completion handler
             completionHandlerForAuthenticateUser(true, "")

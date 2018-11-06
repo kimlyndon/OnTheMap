@@ -8,13 +8,22 @@
 
 import Foundation
 
-class UdacityClient: NSObject{
+extension Optional where Wrapped == String {
+    var nilIfEmpty: String? {
+        guard let strongSelf = self else {
+            return nil
+        }
+        return strongSelf.isEmpty ? nil : strongSelf
+    }
+}
 
+class UdacityClient: NSObject{
     
-    var accountKey = ""
-    var sessionID = ""
-    var firstName = ""
-    var lastName = ""
+    
+   var accountKey = ""
+   var sessionId = ""
+   var firstName = ""
+   var lastName = ""
 
     
     //Mark Properties
@@ -23,7 +32,8 @@ class UdacityClient: NSObject{
     
     // MARK: Methods
     
-   
+
+
     //MARK: POST
     func taskForPOSTLoginMethod(username: String, password: String, completionHandlerForPOSTLoginMethod: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         
@@ -164,7 +174,7 @@ class UdacityClient: NSObject{
         StudentInformation.userLocationDictionary = [:]
         
     }
-
+    
 // MARK: Shared Instance
 
 class func sharedInstance() -> UdacityClient {
@@ -173,6 +183,8 @@ class func sharedInstance() -> UdacityClient {
     }
     return Singleton.sharedInstance
 }
+    
+    
 
 }
 
