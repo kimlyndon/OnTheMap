@@ -18,8 +18,18 @@ class TabBarViewController: UITabBarController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NotificationCenter.default.addObserver(self, selector: #selector(TabBarViewController.onRefreshData), name: NSNotification.Name(rawValue: "reloadData"), object: nil)
+        onRefreshData()
 }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+    }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
         
@@ -64,8 +74,13 @@ class TabBarViewController: UITabBarController {
     @IBAction func addBarButtonTapped(_ sender: Any) {
         //Segues to AddLocationViewController
         
+        }
+    
+    @objc func onRefreshData() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshData"), object: nil)
         
-    }
+            }
+
     
     //MARK: Navigation (Per Mentor:)
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -129,3 +144,4 @@ class TabBarViewController: UITabBarController {
     
     
 }
+
