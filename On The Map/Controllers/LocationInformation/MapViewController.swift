@@ -10,6 +10,7 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
+    
     var annotations = [MKPointAnnotation]()
     
     @IBOutlet weak var mapView: MKMapView!

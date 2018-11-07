@@ -169,6 +169,7 @@ extension ParseClient {
             arrayOfLocationsDictionaries.insert(StudentInformation.userLocationDictionary, at: 0)
             
             //  MARK: Store 101 Student locations (includes 1 User Location)
+            
             arrayOfStudentLocations = StudentInformation.studentInformationFromResults(arrayOfLocationsDictionaries)
             
             print("")

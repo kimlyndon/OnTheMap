@@ -8,8 +8,10 @@
 
 import UIKit
 
+
+
 class TableViewController: UITableViewController {
-    
+
     //MARK: Outlets
     @IBOutlet weak var ListTableView: UITableView!
     
@@ -17,6 +19,7 @@ class TableViewController: UITableViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,10 +38,10 @@ class TableViewController: UITableViewController {
     
     //MARK: TableView delegate methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+       
         // Get cell type
         let cellReuseIdentifier = "TableViewCell"
-        let studentLocation = arrayOfStudentLocations[indexPath.row]
+        let studentLocation = arrayOfStudentLocations
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UITableViewCell
         
         //Set cell defaults
@@ -54,7 +57,7 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfStudentLocations.count
+        return StudentDataSource.sharedInstance().arrayOfStudentLocations.count
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -62,6 +65,7 @@ class TableViewController: UITableViewController {
         //Open mediaURL
         let app = UIApplication.shared
         let url = arrayOfStudentLocations[indexPath.row].mediaURL
+            
         
         print("verifyURL: \(verifyUrl(urlString: url))")
         
@@ -76,3 +80,4 @@ class TableViewController: UITableViewController {
         }
     }
 }
+

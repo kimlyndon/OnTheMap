@@ -10,20 +10,17 @@ import Foundation
 
 class StudentDataSource: NSObject {
     
-    static let shradeInstance = StudentDataSource()
     
     var arrayOfStudentLocations = [StudentInformation]()
-    
-    private override init() {}
-    
-    func updateModel(_ studentArray : [[String: AnyObject]]) {
-        
-        self.arrayOfStudentLocations.removeAll()
-        
-        for dictionary in studentArray {
-            
-            let student = StudentInformation.init(dictionary: dictionary)
-            arrayOfStudentLocations.append(student!)
+   
+    class func sharedInstance() -> StudentDataSource {
+        struct Singleton {
+            static var sharedInstance = StudentDataSource()
         }
+        return Singleton.sharedInstance
     }
 }
+    
+
+
+
