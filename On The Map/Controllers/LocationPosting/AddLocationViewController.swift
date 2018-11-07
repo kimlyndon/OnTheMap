@@ -138,4 +138,20 @@ class AddLocationViewController: UIViewController {
             self.navigationController?.pushViewController(addLocationMapVC, animated: true)
         }
     }
+    
+    // MARK: Keyboard Methods
+// Move the view up to accommodate keyboard.
+    @objc override func keyboardWillShow(_ notification:Notification) {
+        self.view.frame.origin.y =  getKeyboardHeight(notification) * -0.3
+        
+    }
+    
+    // move the view back down when the keyboard is dismissed
+    @objc override func keyboardWillHide(_ notification:Notification) {
+        
+        view.frame.origin.y = 0
+        
+    }
+    
 }
+

@@ -341,13 +341,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="CgM-Tp-uBy"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="e7l-JF-xx1"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="e7l-JF-xx1"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BYi-3g-HVh">
                                         <rect key="frame" x="0.0" y="60" width="250" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="KQS-5P-r3d"/>
+                                            <constraint firstAttribute="height" constant="30" id="O9d-ML-QRs"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -356,7 +356,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter URL (start with https://)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edu-kK-A4i">
                                         <rect key="frame" x="0.0" y="90" width="250" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="8a1-jo-VFH"/>
+                                            <constraint firstAttribute="height" constant="30" id="z1C-9v-ErP"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -366,7 +366,7 @@
                                         <rect key="frame" x="0.0" y="120" width="250" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Szx-6i-KUw"/>
+                                            <constraint firstAttribute="height" constant="30" id="Zab-Ce-uKD"/>
                                         </constraints>
                                         <state key="normal" title="Find Location">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
