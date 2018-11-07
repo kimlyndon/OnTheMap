@@ -10,14 +10,20 @@ import Foundation
 
 class StudentDataSource: NSObject {
     
-    class func sharedInstance() -> StudentDataSource {
+    static let shradeInstance = StudentDataSource()
+    
+    var arrayOfStudentLocations = [StudentInformation]()
+    
+    private override init() {}
+    
+    func updateModel(_ studentArray : [[String: AnyObject]]) {
         
-        struct Singleton {
-            static var sharedInstance = StudentDataSource()
+        self.arrayOfStudentLocations.removeAll()
+        
+        for dictionary in studentArray {
+            
+            let student = StudentInformation.init(dictionary: dictionary)
+            arrayOfStudentLocations.append(student!)
         }
-        return Singleton.sharedInstance
     }
 }
-
-// MARK: Global Variable
-var arrayOfStudentData = [StudentInformation]()
