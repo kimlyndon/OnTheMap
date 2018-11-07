@@ -194,7 +194,7 @@
             <objects>
                 <navigationController storyboardIdentifier="InitialNavigationController" id="QoF-0C-tRt" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lEG-oE-OUj">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -335,13 +335,17 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lIn-Y3-LNa">
-                                <rect key="frame" x="35" y="108" width="250" height="140"/>
+                                <rect key="frame" x="35" y="127" width="250" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="sNz-Lh-1e3">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="CgM-Tp-uBy"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="e7l-JF-xx1"/>
+                                        </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BYi-3g-HVh">
-                                        <rect key="frame" x="0.0" y="50" width="250" height="30"/>
+                                        <rect key="frame" x="0.0" y="60" width="250" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="KQS-5P-r3d"/>
                                         </constraints>
@@ -350,7 +354,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter URL (start with https://)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edu-kK-A4i">
-                                        <rect key="frame" x="0.0" y="80" width="250" height="30"/>
+                                        <rect key="frame" x="0.0" y="90" width="250" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="8a1-jo-VFH"/>
                                         </constraints>
@@ -359,7 +363,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Eb-H5-YSg">
-                                        <rect key="frame" x="0.0" y="110" width="250" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="250" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Szx-6i-KUw"/>
@@ -379,9 +383,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="lIn-Y3-LNa" firstAttribute="top" secondItem="vAu-tW-B0e" secondAttribute="top" constant="44" id="GOT-Gg-dPb"/>
+                            <constraint firstItem="lIn-Y3-LNa" firstAttribute="top" secondItem="vAu-tW-B0e" secondAttribute="top" constant="63" id="GOT-Gg-dPb"/>
                             <constraint firstItem="vAu-tW-B0e" firstAttribute="leading" secondItem="tuo-2n-MNF" secondAttribute="leading" id="R3i-d9-nBS"/>
-                            <constraint firstItem="tuo-2n-MNF" firstAttribute="bottom" secondItem="lIn-Y3-LNa" secondAttribute="bottom" constant="232" id="Rcu-Fg-JU8"/>
+                            <constraint firstItem="tuo-2n-MNF" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="lIn-Y3-LNa" secondAttribute="bottom" constant="220" id="Rcu-Fg-JU8"/>
                             <constraint firstItem="lIn-Y3-LNa" firstAttribute="centerX" secondItem="WJr-6n-R42" secondAttribute="centerX" id="YVZ-2R-T3T"/>
                             <constraint firstItem="vAu-tW-B0e" firstAttribute="trailing" secondItem="tuo-2n-MNF" secondAttribute="trailing" id="acK-K8-hLX"/>
                             <constraint firstItem="vAu-tW-B0e" firstAttribute="top" secondItem="tuo-2n-MNF" secondAttribute="top" id="yZj-l6-sBD"/>
