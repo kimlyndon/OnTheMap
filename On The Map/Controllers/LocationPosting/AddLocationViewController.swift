@@ -16,6 +16,7 @@ class AddLocationViewController: UIViewController {
     @IBOutlet weak var enterLocationTextField: UITextField!
     @IBOutlet weak var enterURLTextField: UITextField!
     @IBOutlet weak var findLocationButton: UIButton!
+    @IBOutlet weak var actInd: UIActivityIndicatorView!
     
     //MARK: Properties
     var keyboardOnScreen = false
@@ -35,6 +36,10 @@ class AddLocationViewController: UIViewController {
     }
     
     //MARK: Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        actInd.hidesWhenStopped = true
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -70,6 +75,7 @@ class AddLocationViewController: UIViewController {
         }
         
         self.disableUI()
+        actInd.startAnimating()
         
         StudentInformation.NewUserLocation.mapString = location
         newLocation = location
@@ -80,6 +86,8 @@ class AddLocationViewController: UIViewController {
     }
     
     //MARK: Methods
+    
+  
     
     func getCoordinatesFromLocation(location: String) {
         print("getCoordinatesOfLocation called")
@@ -98,6 +106,16 @@ class AddLocationViewController: UIViewController {
                 self.enableUI()
                 return
             }
+            
+          /*  func showActivityIndicatory(uiView: UIView) {
+                let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+                actInd.frame = CGRect(x:0.0, y:0.0, width: 40.0, height: 40.0);
+                actInd.center = uiView.center
+                actInd.hidesWhenStopped = true
+                actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+                uiView.addSubview(actInd)
+                actInd.startAnimating()
+            }  */
             
             let placemark = placemarks?.first
         
@@ -153,5 +171,7 @@ class AddLocationViewController: UIViewController {
         
     }
     
-}
+    }
+    
+
 

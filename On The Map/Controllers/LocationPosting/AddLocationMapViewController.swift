@@ -16,6 +16,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
     //MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var finishButton: UIButton!
+    @IBOutlet weak var actInd: UIActivityIndicatorView!
     
     //MARK: Properties
     // Per forum: Create blank properties in order to allow "AddLocationViewController" to send over data.
@@ -46,6 +47,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        actInd.startAnimating()
         
         mapView.delegate = self
         
@@ -82,6 +84,11 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
         
         //From an example on forum: Calling the helper method to zoom into 'initialLocation' on startup.
         centerMapOnLocation(location: initialLocation)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        actInd.stopAnimating()
+        actInd.hidesWhenStopped = true
     }
     
     func userNewLocationData() -> [[String : Any]] {
@@ -149,6 +156,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
     //MARK: Actions
     @IBAction func finishButtonTapped(_ sender: UIButton) {
         finishButton.isEnabled = false
+        actInd.startAnimating()
         
         //Get Student's Data
         if userObjectId.isEmpty {
@@ -157,6 +165,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
         } else {
         //User already exists (PUT)
             callPutToStudentLocation()
+        
         }
     }
     
@@ -164,10 +173,11 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
     func callPostToStudentLocation() {
        ParseClient.sharedInstance().postAStudentLocation(newUserMapString: newLocation, newUserMediaURL: newURL, newUserLatitude: newLatitude, newUserLongitude: newLongitude, completionHandlerForLocationPOST: { (success, errorString) in
             
-            guard (success == true) else {
+            guard success else {
                 // display the errorString using createAlert
                 print("Unsuccessful in POSTing user location: \(errorString)")
                 performUIUpdatesOnMain {
+                    self.actInd.stopAnimating()
                     self.createAlert(title: "Error", message: "Unable to add new location. The Internet connection appears to be offline.")
                 }
                 return
@@ -175,9 +185,10 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
            print("Successfully POSTed user location.")
             
             ParseClient.sharedInstance().getALocation() { (data, errorString) in
-                guard (success == true) else {
+                guard success else {
                     print("Unsuccessful in obtaining A Student Location from Parse: \(errorString)")
                     performUIUpdatesOnMain {
+                        self.actInd.stopAnimating()
             
                     self.createAlert(title: "Error", message: "Failure to download user location data.")
                     }
@@ -191,10 +202,11 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
                 // MARK: Get 100 student locations from Parse
                 ParseClient.sharedInstance().getLocationsRequest() { (data, errorString) in
                     
-                    guard (success == true) else {
+                    guard success else {
                     
                         print("Unsuccessful in obtaining Student Locations from Parse: \(errorString)")
                         performUIUpdatesOnMain {
+                            self.actInd.stopAnimating()
                             self.createAlert(title: "Error", message: "Failure to download student locations data.")
                         }
                         return
@@ -203,7 +215,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
                     
                     // After all are successful, completeLogin
                     self.dismiss(animated: true, completion: nil)
-                    
+                    self.actInd.stopAnimating()
                 }
             }
         })
@@ -212,11 +224,12 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
     func callPutToStudentLocation() {
         ParseClient.sharedInstance().putAStudentLocation(newUserMapString: newLocation, newUserMediaURL: newURL, newUserLatitude: newLatitude, newUserLongitude: newLongitude, completionHandlerForLocationPUT: { (success, errorString) in
             
-            guard (success == true) else {
+            guard success else {
                 
                 print("callPutToStudentLocation: Unsuccessful in obtaining User Name from Udacity Public User Data: \(errorString)")
                 performUIUpdatesOnMain {
-            
+                    
+                    self.actInd.stopAnimating()
                     self.createAlert(title: "Error", message: "Unable to add new location. The Internet connection appears to be offline.")
                 }
                 return
@@ -229,7 +242,8 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
                     
                     print("Unsuccessful in obtaining A Student Location from Parse: \(errorString)")
                     performUIUpdatesOnMain {
-                     
+                        
+                        self.actInd.stopAnimating()
                         self.createAlert(title: "Error", message: "Failure to download user location data.")
                     }
                     return
@@ -241,11 +255,12 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
                 // MARK: Get 100 student locations from Parse
                 ParseClient.sharedInstance().getLocationsRequest() { (data, errorString) in
                     
-                    guard (success == true) else {
+                    guard success else {
                       
                         print("Unsuccessful in obtaining Student Locations from Parse: \(errorString)")
                         performUIUpdatesOnMain {
                             
+                            self.actInd.stopAnimating()
                             self.createAlert(title: "Error", message: "Failure to download student locations data.")
                         }
                         return

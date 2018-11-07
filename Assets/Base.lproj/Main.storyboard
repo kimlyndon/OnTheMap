@@ -194,7 +194,7 @@
             <objects>
                 <navigationController storyboardIdentifier="InitialNavigationController" id="QoF-0C-tRt" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lEG-oE-OUj">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -335,12 +335,13 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lIn-Y3-LNa">
-                                <rect key="frame" x="35" y="127" width="250" height="150"/>
+                                <rect key="frame" x="35" y="127" width="250" height="170"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="sNz-Lh-1e3">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="CgM-Tp-uBy"/>
+                                            <constraint firstAttribute="width" constant="250" id="EvH-KG-1ey"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="e7l-JF-xx1"/>
                                         </constraints>
                                     </imageView>
@@ -348,6 +349,7 @@
                                         <rect key="frame" x="0.0" y="60" width="250" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="O9d-ML-QRs"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Yi0-vJ-IEI"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -356,6 +358,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter URL (start with https://)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edu-kK-A4i">
                                         <rect key="frame" x="0.0" y="90" width="250" height="30"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="gbB-eB-mjS"/>
                                             <constraint firstAttribute="height" constant="30" id="z1C-9v-ErP"/>
                                         </constraints>
                                         <nil key="textColor"/>
@@ -366,6 +369,7 @@
                                         <rect key="frame" x="0.0" y="120" width="250" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Hbv-GT-EXo"/>
                                             <constraint firstAttribute="height" constant="30" id="Zab-Ce-uKD"/>
                                         </constraints>
                                         <state key="normal" title="Find Location">
@@ -375,10 +379,10 @@
                                             <action selector="findLocationButtonTapped:" destination="pUW-Gv-i6x" eventType="touchUpInside" id="xGX-sQ-Xyt"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6wl-Lc-t9n">
+                                        <rect key="frame" x="0.0" y="150" width="250" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="QVk-Fw-HO8"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -394,6 +398,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="qb7-Bk-m05"/>
                     <connections>
+                        <outlet property="actInd" destination="6wl-Lc-t9n" id="vb0-Wf-9bG"/>
                         <outlet property="enterLocationTextField" destination="BYi-3g-HVh" id="CCr-ga-YWU"/>
                         <outlet property="enterURLTextField" destination="edu-kK-A4i" id="BMU-hL-WRd"/>
                         <outlet property="findLocationButton" destination="5Eb-H5-YSg" id="cXz-ug-ibE"/>
@@ -424,9 +429,14 @@
                                     <action selector="finishButtonTapped:" destination="W3C-js-dLz" eventType="touchUpInside" id="Ika-gI-lZm"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Giu-ua-AYO">
+                                <rect key="frame" x="150" y="230" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Giu-ua-AYO" firstAttribute="centerX" secondItem="GuZ-dh-M8S" secondAttribute="centerX" id="1y9-aJ-hjB"/>
+                            <constraint firstItem="Giu-ua-AYO" firstAttribute="centerY" secondItem="GuZ-dh-M8S" secondAttribute="centerY" id="ARZ-5u-fvR"/>
                             <constraint firstItem="4La-BM-NcC" firstAttribute="bottom" secondItem="Cfj-pk-dli" secondAttribute="bottom" constant="20" id="FYs-QU-kmr"/>
                             <constraint firstItem="4La-BM-NcC" firstAttribute="trailing" secondItem="Cfj-pk-dli" secondAttribute="trailing" constant="20" id="KHx-gI-VBz"/>
                             <constraint firstItem="4La-BM-NcC" firstAttribute="bottom" secondItem="7a7-oR-UmN" secondAttribute="bottom" id="LRH-FO-nay"/>
@@ -438,6 +448,7 @@
                         <viewLayoutGuide key="safeArea" id="4La-BM-NcC"/>
                     </view>
                     <connections>
+                        <outlet property="actInd" destination="Giu-ua-AYO" id="uWn-AI-Qee"/>
                         <outlet property="finishButton" destination="Cfj-pk-dli" id="GSk-9d-axc"/>
                         <outlet property="mapView" destination="7a7-oR-UmN" id="0cu-m2-A4E"/>
                     </connections>
