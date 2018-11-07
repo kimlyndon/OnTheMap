@@ -12,7 +12,7 @@ If the user is not a Udacity Student, there is a SignUp button provided on the l
 After logging in , a map appears with pins already populated via code to access the Udacity/Parse API which includes infomration previously posted by past users. Each pin contains a name and a custom URL which is verified within the code. After viewing the information posted by other students, a user can post their own location and link via the add (+) button.
 
 ## Implementation
-The app has four view controller scenes:
+The app has five view controller scenes:
 
 **Login** - allows the user to log in using their Udacity credentials or SignUp (via Safari on the Udacity page) to obtain credentials. 
 
@@ -29,6 +29,8 @@ Tapping anywhere within the annotation will launch Safari and direct it to the l
 **TableView** - displays the most recent 100 locations posted by students in a table. Each row displays the name from the student’s Udacity profile and the link they have posted. Tapping on the row launches Safari and opens the link associated with the student.
 
 **Add Location** - allows users to add their location and a their contact(linkedin or website). If the user already added their location and website they can overwrite it if they choose to do so.
+
+**Submit** - once the user has added their info, this view zooms in on their location and the pin shows their name and url to be submitted to the que. 
 
 
 ## Requirements
