@@ -158,8 +158,7 @@ extension ParseClient {
                 // objectId == "", ignore user location and input data retrieved into the array.
                // print("User's objectId does NOT exist [\(StudentInformation.UserData.objectId)], store 100 student locations.")
                 
-                arrayOfStudentLocations = StudentInformation.studentInformationFromResults(arrayOfLocationsDictionaries)
-                
+                StudentDataSource.sharedInstance().arrayOfStudentLocations = StudentInformation.studentInformationFromResults(arrayOfLocationsDictionaries)
                 completionHandlerForGETLocationsRequest(true, "")
                 return
             }
@@ -170,7 +169,7 @@ extension ParseClient {
             
             //  MARK: Store 101 Student locations (includes 1 User Location)
             
-            arrayOfStudentLocations = StudentInformation.studentInformationFromResults(arrayOfLocationsDictionaries)
+           StudentDataSource.sharedInstance().arrayOfStudentLocations = StudentInformation.studentInformationFromResults(arrayOfLocationsDictionaries)
             
             print("")
             print("arrayOfStudentLocations")

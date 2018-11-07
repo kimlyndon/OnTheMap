@@ -41,13 +41,13 @@ class TableViewController: UITableViewController {
        
         // Get cell type
         let cellReuseIdentifier = "TableViewCell"
-        let studentLocation = arrayOfStudentLocations
+        let studentLocations = StudentDataSource.sharedInstance().arrayOfStudentLocations
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UITableViewCell
         
         //Set cell defaults
-        let first = studentLocation.firstName
-        let last = studentLocation.lastName
-        let mediaURL = studentLocation.mediaURL
+        let first = studentLocations.firstName
+        let last = studentLocations.lastName
+        let mediaURL = studentLocations.mediaURL
         cell.textLabel!.text = "\(first ?? "") \(last ?? "")"
         cell.imageView!.image = UIImage(named: "icon_pin")
         cell.detailTextLabel?.text = mediaURL
@@ -64,7 +64,7 @@ class TableViewController: UITableViewController {
        
         //Open mediaURL
         let app = UIApplication.shared
-        let url = arrayOfStudentLocations[indexPath.row].mediaURL
+        let url = StudentDataSource.sharedInstance().arrayOfStudentLocations[indexPath.row].mediaURL
             
         
         print("verifyURL: \(verifyUrl(urlString: url))")
