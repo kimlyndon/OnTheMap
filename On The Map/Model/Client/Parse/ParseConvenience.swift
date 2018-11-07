@@ -173,7 +173,7 @@ extension ParseClient {
             
             print("")
             print("arrayOfStudentLocations")
-            print(arrayOfStudentLocations)
+            print(StudentDataSource.sharedInstance().arrayOfStudentLocations)
             print("")
             
             // Only completionHander that sets 'data' to 'true'
