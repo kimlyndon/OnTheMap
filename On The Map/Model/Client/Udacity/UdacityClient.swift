@@ -11,10 +11,10 @@ import Foundation
 class UdacityClient: NSObject{
     
     
-    var accountKey : String? = ""
-    var sessionId : String? = ""
-    var firstName : String? = ""
-    var lastName : String? = ""
+    var accountKey = ""
+    var sessionId = ""
+    var firstName = ""
+    var lastName = ""
 
     
     //Mark Properties
