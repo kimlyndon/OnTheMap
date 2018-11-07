@@ -97,7 +97,4 @@ struct StudentInformation {
 }
 
 
-//MARK: Global variable
-
-var arrayOfStudentLocations = [StudentInformation]()
  

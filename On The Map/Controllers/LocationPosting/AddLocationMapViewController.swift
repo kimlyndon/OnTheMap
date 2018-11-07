@@ -214,8 +214,9 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
                     print("Successfully obtained Student Locations data from Parse")
                     
                     // After all are successful, completeLogin
-                    self.dismiss(animated: true, completion: nil)
                     self.actInd.stopAnimating()
+                    self.dismiss(animated: true, completion: nil)
+                   
                 }
             }
         })
