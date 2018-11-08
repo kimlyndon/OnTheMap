@@ -41,7 +41,7 @@ class TableViewController: UITableViewController {
        
         // Get cell type
         let cellReuseIdentifier = "TableViewCell"
-        let studentLocations = StudentDataSource.sharedInstance().arrayOfStudentLocations
+        let studentLocations = StudentDataSource.sharedInstance.arrayOfStudentLocations
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UITableViewCell
         
         //Set cell defaults
@@ -57,14 +57,14 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StudentDataSource.sharedInstance().arrayOfStudentLocations.count
+        return StudentDataSource.sharedInstance.arrayOfStudentLocations.count
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         //Open mediaURL
         let app = UIApplication.shared
-        let url = StudentDataSource.sharedInstance().arrayOfStudentLocations[indexPath.row].mediaURL
+        let url = StudentDataSource.sharedInstance.arrayOfStudentLocations[indexPath.row].mediaURL
             
         
         print("verifyURL: \(verifyUrl(urlString: url))")

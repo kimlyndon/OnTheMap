@@ -46,7 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         
         // This is an array of studentLocations (struct StudentInformation)
-        for student in StudentDataSource.sharedInstance().arrayOfStudentLocations {
+        for student in StudentDataSource.sharedInstance.arrayOfStudentLocations {
     
            
             let lat = CLLocationDegrees(student.latitude ?? 0)
@@ -80,7 +80,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
         var annotations = [MKPointAnnotation]()
         
-        for student in StudentDataSource.sharedInstance().arrayOfStudentLocations {
+        for student in StudentDataSource.sharedInstance.arrayOfStudentLocations {
            
             let lat = CLLocationDegrees(student.latitude ?? 0)
             let long = CLLocationDegrees(student.longitude ?? 0)

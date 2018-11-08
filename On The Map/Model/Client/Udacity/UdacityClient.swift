@@ -148,7 +148,7 @@ class UdacityClient: NSObject{
 
     func clearUserData() {
         // clear out all user data after successful logout
-        StudentDataSource.sharedInstance().arrayOfStudentLocations = []
+        StudentDataSource.sharedInstance.arrayOfStudentLocations = []
         
         StudentInformation.NewUserLocation.latitude = 0.0
         StudentInformation.NewUserLocation.longitude = 0.0
