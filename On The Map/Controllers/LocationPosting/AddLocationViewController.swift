@@ -74,7 +74,7 @@ class AddLocationViewController: UIViewController {
             return
         }
         
-        self.disableUI()
+        disableUI()
         actInd.startAnimating()
         
         StudentInformation.NewUserLocation.mapString = location
@@ -104,9 +104,10 @@ class AddLocationViewController: UIViewController {
                 
                 self.createAlert(title: "Error", message: "Could not calculate coordinates. Check your internet connection.")
                 self.enableUI()
+                self.actInd.isHidden = true
                 return
             }
-            
+            //Keep this code for future reference:
           /*  func showActivityIndicatory(uiView: UIView) {
                 let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
                 actInd.frame = CGRect(x:0.0, y:0.0, width: 40.0, height: 40.0);
