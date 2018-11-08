@@ -10,16 +10,15 @@ import Foundation
 
 class StudentDataSource: NSObject {
     
-    
+    static let sharedInstance = StudentDataSource()
+   
     var arrayOfStudentLocations = [StudentInformation]()
    
-    class func sharedInstance() -> StudentDataSource {
-        struct Singleton {
-            static var sharedInstance = StudentDataSource()
+  
         }
-        return Singleton.sharedInstance
-    }
-}
+
+//Per Code Review, use dispatch_once for shared instance.
+
     
 
 
