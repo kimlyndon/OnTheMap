@@ -23,10 +23,6 @@ class LoginViewController: UIViewController {
     //MARK: Properties
     var keyboardVisible = false
     
-    //MARK: Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,7 +55,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        self.disableUI()
+        disableUI()
         
         // 2. Call 'authenticateUser'
        
@@ -150,7 +146,7 @@ private func completeLogin() {
         }
     }
 }
-
+//Tested removal of all instances of "self." Xcode mostly complained :) 
 
 
 
