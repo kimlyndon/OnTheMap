@@ -36,4 +36,22 @@ Tapping anywhere within the annotation will launch Safari and direct it to the l
 ## Requirements
 Xcode 8.0 Swift 3.0
 
+## How To:
+* Run:
+  * Clone or Download project
+  * Open OnTheMap.xcodeproj
+  * Click the play button located at top left of xcode
+  
+ * Play: (Must have Udacity credentials)
+   * Enter e-mall and password OR tap SignUp (If Signing up, you will be redirected to login screen to enter new credentials)
+   * Tap on a pin to see student info and follow personal url (can also be done from Listview on bottom right of screen)  -OR-
+   * Tap the add location button at upper right of screen
+   * Enter coordinates or city, state
+   * Enter a url that starts with https:// and click "Find Location"
+   * Confirm your info on the pin by tapping and viewing
+   * Tap Submit
+   * View your info on the map or the ListView
+   * Tap Logout (upper right) when finished. 
+   
+
 ***AppIcon pic credit: freepik.com
