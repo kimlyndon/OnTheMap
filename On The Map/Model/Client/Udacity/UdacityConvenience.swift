@@ -86,7 +86,7 @@ extension UdacityClient {
     func getPublicUserData(completionHandlerForGETPublicUserData: @escaping (_ success:Bool, _ error:String)->Void) {
         
         // Call taskForGETPublicUserData (from UdacityClient) and parse the JSON data
-        taskForGETPublicUserData(userID: self.accountKey ?? "") {  (data, error) in
+        taskForGETPublicUserData(userID: self.accountKey ) {  (data, error) in
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {

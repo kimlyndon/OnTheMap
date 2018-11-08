@@ -45,9 +45,9 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UITableViewCell
         
         //Set cell defaults
-        let first = studentLocations.firstName
-        let last = studentLocations.lastName
-        let mediaURL = studentLocations.mediaURL
+        let first = studentLocations[indexPath.row].firstName
+        let last = studentLocations[indexPath.row].lastName
+        let mediaURL = studentLocations[indexPath.row].mediaURL
         cell.textLabel!.text = "\(first ?? "") \(last ?? "")"
         cell.imageView!.image = UIImage(named: "icon_pin")
         cell.detailTextLabel?.text = mediaURL

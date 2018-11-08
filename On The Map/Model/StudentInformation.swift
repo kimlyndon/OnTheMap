@@ -10,7 +10,7 @@ import Foundation
 
 
 struct StudentInformation {
-    
+   
     let objectId : String?
     let firstName: String?
     let lastName : String?
