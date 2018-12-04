@@ -86,11 +86,7 @@ class AddLocationViewController: UIViewController {
     }
     
     //MARK: Methods
-    
-  
-    
     func getCoordinatesFromLocation(location: String) {
-        print("getCoordinatesOfLocation called")
         
         let geocoder = CLGeocoder()
         

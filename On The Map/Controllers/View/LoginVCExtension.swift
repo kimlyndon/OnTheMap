@@ -36,7 +36,7 @@ extension UIViewController {
             }
         }
         return false
-}
+    }
 
     // MARK: Keyboard Methods
     
